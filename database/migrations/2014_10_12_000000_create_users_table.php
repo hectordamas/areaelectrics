@@ -15,8 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('company');
+            $table->string('identification');
+            $table->string('telephone');
+            $table->string('listen')->nullable();
+            $table->longText('billingAddress')->nullable();
+            $table->longText('shippingAddress')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('Usuario');
+            $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
