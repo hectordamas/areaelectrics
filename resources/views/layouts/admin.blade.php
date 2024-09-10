@@ -41,7 +41,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-                <img src="{{ asset('assets/images/logo_light.png') }}" class="w-100" style="max-width: 180px;" alt="" srcset="">
+                <img src="{{ asset('assets/images/logo_light.png') }}" class="w-100 py-3" style="max-width: 180px;" alt="" srcset="">
             </a>
 
             <!-- Divider -->

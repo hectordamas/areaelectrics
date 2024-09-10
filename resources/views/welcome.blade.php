@@ -1,6 +1,10 @@
-@extends('layouts.welcome')
+@extends('layouts.app')
+@section('metadata')
+<title>{{ env('APP_NAME') }} - Rompe El Tabú</title>
+<meta name="description" content="Somos una empresa venezolana especializada en la distribución de productos de red, iluminación y fibra óptica. Nos destacamos por ofrecer a nuestros distribuidores autorizados las marcas líderes del mercado venezolano, como Wireplus, TP-Link, Mercusys, Ezviz, Hikvision, entre otras.">
+<meta name="keywords" content="nosotros, acerca de, ecommerce, tienda en linea, ezviz, wireplus, fibra optica, redes, mayorista, distribucion, red, iluminacion, cables">
+@endsection
 @section('content')
-<!-- START SECTION BANNER -->
 <!-- START SECTION BANNER -->
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">

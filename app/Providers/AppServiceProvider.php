@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
            // $unreadConections = Conection::where('is_read', false)->count();
             $unreadMessages = Message::where('is_read', false)->count();
 
-            $totalUnread = $unreadOrders + $unreadConections;
+            $totalUnread = $unreadOrders;
     
             // Obtener las órdenes y añadir el tipo
             $orders = Order::orderBy('created_at', 'desc')
@@ -86,9 +86,9 @@ class AppServiceProvider extends ServiceProvider
                 ->sortByDesc('created_at')
                 ->take(3);
             }*/
-            $notifications = $orders->merge($conections)
+            $notifications = $orders
             ->sortByDesc('created_at')
-            ->take(3);
+            ->take(6);
 
             $messages = Message::orderBy('created_at', 'desc')->take(4)->get();
 

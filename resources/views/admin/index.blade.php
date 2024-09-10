@@ -197,11 +197,11 @@
                 <!-- Illustrations -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Últimas Solicitudes</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Últimos Mensajes</h6>
                     </div>
                     <div class="card-body p-0">
-                        @forelse($conections as $conection)
-                        <a class="dropdown-item d-flex align-items-center py-3 border-bottom" href="{{ url('admin/conections/' . $conection->id) }}">
+                        @forelse($messages as $message)
+                        <a class="dropdown-item d-flex align-items-center py-3 border-bottom" href="{{ url('messages/' . $message->id) }}">
                             <div class="mr-3">
                                 <div class="icon-circle bg-primary">
                                     <i class="fas fa-user-plus text-white"></i>
@@ -209,24 +209,24 @@
                             </div>
                             <div>
                                 <div class="small">
-                                    {{ $conection->created_at->diffForHumans() }} 
-                                    @if(!$conection->is_read)
+                                    {{ $message->created_at->diffForHumans() }} 
+                                    @if(!$message->is_read)
                                         <span class="badge badge-danger small ml-1">No Leido</span>
                                     @endif
                                 </div>
-                                <span class="font-weight-bold">Nueva solicitud de afiliación por {{ $conection->name }}</span>
+                                <span class="font-weight-bold">Nuevo mensaje de {{ $message->name }}</span>
                             </div>
                         </a>
                         @empty
                         <div class="row">
                             <div class="col-md-12 text-center pt-3 pb-2">
-                                <p class="font-weight-bold">No hay solicitudes disponibles</p>
+                                <p class="font-weight-bold">No hay Mensajes disponibles</p>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="card-footer">
-                        <a href="{{ url('conections') }}" class="text-uppercase" style="font-size: 11px; font-weight:900;">Ver Todas las Solicitudes</a>
+                        <a href="{{ url('messages') }}" class="text-uppercase" style="font-size: 11px; font-weight:900;">Ver Todos los Mensajes</a>
                     </div>
                 </div>
 

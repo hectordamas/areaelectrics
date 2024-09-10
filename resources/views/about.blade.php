@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('metadata')
-<title>{{ env('APP_NAME') }} - Acerca de Fiber Solutions</title>
+<title>{{ env('APP_NAME') }} - Acerca de {{ env('APP_NAME') }}</title>
 <meta name="description" content="Somos una empresa venezolana especializada en la distribución de productos de red, iluminación y fibra óptica. Nos destacamos por ofrecer a nuestros distribuidores autorizados las marcas líderes del mercado venezolano, como Wireplus, TP-Link, Mercusys, Ezviz, Hikvision, entre otras.">
 <meta name="keywords" content="nosotros, acerca de, ecommerce, tienda en linea, ezviz, wireplus, fibra optica, redes, mayorista, distribucion, red, iluminacion, cables">
 @endsection
@@ -33,7 +33,7 @@
 	<div class="container">
     	<div class="row align-items-center">
         	<div class="col-lg-6">
-            	<div class="about_img scene mb-4 mb-lg-0">
+            	<div class="about_img scene mb-lg-0">
                     <img src="{{ asset('assets/images/juguetes-sexuales.jpg') }}" alt="Nosotros: Airanza Sex Shop Imagen"/>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                 <div class="heading_s1">
                     <h2>Acerca de Nosotros</h2>
                 </div>
-                <p>En Airanza Sex Shop, nos dedicamos a mejorar la vida íntima de nuestros clientes a través de una amplia gama de productos diseñados para el placer y la exploración. Como tienda para adultos, ofrecemos una selección curada de juguetes sexuales tanto para hombres como para mujeres, asegurándonos de incluir opciones para todos los gustos y preferencias.</p>
-                <p>Nuestro objetivo es proporcionar todo lo necesario para una experiencia sexual plena y satisfactoria, con un enfoque en la calidad, seguridad y discreción. En Airanza Sex Shop, creemos que la intimidad y el placer son esenciales para una vida equilibrada y feliz, por lo que nos esforzamos en crear un ambiente acogedor y sin juicios para nuestros clientes.</p>
+                <p>En Airanza Sex Shop, nos dedicamos a mejorar la vida íntima de nuestros clientes a través de una amplia gama de productos diseñados para el placer. Como tienda para adultos, ofrecemos una selección curada de juguetes sexuales tanto para hombres como para mujeres, asegurándonos de incluir opciones para todos los gustos y preferencias.</p>
+                <p>Nuestro objetivo es proporcionar todo lo necesario para una experiencia sexual plena y satisfactoria, con un enfoque en la calidad, seguridad y discreción. En Airanza Sex Shop, creemos que la intimidad y el placer son esenciales para una vida equilibrada y feliz, por lo que nos esforzamos en proporcionar una experiencia de compra única.</p>
             </div>
         </div>
     </div>

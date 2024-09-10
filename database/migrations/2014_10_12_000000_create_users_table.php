@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -15,12 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('company');
-            $table->string('identification');
-            $table->string('telephone');
-            $table->string('listen')->nullable();
-            $table->longText('billingAddress')->nullable();
-            $table->longText('shippingAddress')->nullable();
+            $table->string('telephone')->nullable();
+            $table->longText('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('Usuario');
@@ -28,6 +25,13 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $user = new User();
+        $user->name = "Hector Damas";
+        $user->email = 'hectorgabrieldm@hotmail.com';
+        $user->password = bcrypt('alinware98_');        
+        $user->role = 'Administrador';
+        $user->save();
     }
 
     /**
