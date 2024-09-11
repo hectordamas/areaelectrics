@@ -22,7 +22,7 @@
             border-radius: 5px;
         }
         .header {
-            background-color: #007bff;
+            background-color: #FFF;
             color: #ffffff;
             padding: 10px;
             text-align: center;
@@ -65,7 +65,7 @@
 
 <div class="email-container">
     <div class="header">
-        <img src="https://i.postimg.cc/3RQFQZ08/logo-light.png" alt="Fiber Solutions">
+        <img src="https://i.postimg.cc/G2fMfBYG/logo-dark.png" alt="Fiber Solutions">
         <h1>Nuevo Mensaje Recibido</h1>
     </div>
 

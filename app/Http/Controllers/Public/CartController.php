@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -92,6 +93,10 @@ class CartController extends Controller
             'cart_tax' => $cart_tax,
             'items' => $items
         ]);
+    }
+
+    public function finalizarCompra(){
+        return view('cart.checkout');
     }
 
     public function checkout(){

@@ -6,10 +6,18 @@
 <div class="container">
     <div class="row justify-content-center py-5">
         <div class="col-md-6">
-            <div class="card border-0 shadow">
-                <div class="card-header">Recuperar Contraseña</div>
+            <div class="login_wrap">
+                <div class="padding_eight_all bg-white">
+                    <div class="heading_s1">
+                        <h3>Restablecer Contraseña</h3>
+                    </div>
 
-                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('password.update') }}" class="row">
                         @csrf
 
@@ -49,6 +57,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

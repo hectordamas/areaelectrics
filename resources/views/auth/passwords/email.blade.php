@@ -8,10 +8,12 @@
 <div class="container">
     <div class="row justify-content-center py-5">
         <div class="col-md-6">
-            <div class="card border-0 shadow">
-                <div class="card-header">Restablecer Contraseña</div>
+            <div class="login_wrap">
+                <div class="padding_eight_all bg-white">
+                    <div class="heading_s1">
+                        <h3>Restablecer Contraseña</h3>
+                    </div>
 
-                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -22,9 +24,7 @@
                         @csrf
 
                         <div class="col-md-12 form-group mb-3">
-                            <label for="email">Correo Electrónico</label>
-
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Ingresa tu Correo Electrónico" autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-fill-out btn-radius">
+                            <button type="submit" class="btn btn-fill-out">
                                 <i class="fas fa-paper-plane"></i> Enviar Link de Recuperación
                             </button>
                         </div>

@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://i.postimg.cc/3RQFQZ08/logo-light.png" alt="Fiber Solutions">
+            <img src="https://i.postimg.cc/G2fMfBYG/logo-dark.png" alt="{{ env('APP_NAME') }}">
             <h1>Gracias por tu pedido</h1>
         </div>
         <div class="order-details">
@@ -116,7 +116,7 @@
             </tfoot>
         </table>
         <div class="footer">
-            &copy; {!! date('Y') !!} Fiber Solutions - Todos los derechos reservados.
+            &copy; {!! date('Y') !!} {{ env('APP_NAME') }} - Todos los derechos reservados.
         </div>
     </div>
 </body>

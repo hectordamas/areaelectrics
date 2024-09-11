@@ -92,10 +92,35 @@
                     <ul class="navbar-nav">
                         <li><a class="nav-link nav_item active" href="{{ url('/') }}">Inicio</a></li> 
                         <li><a class="nav-link nav_item" href="{{ url('/tienda-en-linea') }}">Tienda</a></li> 
-                        <li><a class="nav-link nav_item" href="#">Nuestros Productos</a></li> 
+                        <li class="dropdown dropdown-mega-menu">
+                            <a class="dropdown-toggle nav-link {{ request()->is('nuestras-categorias/*') ? 'active' : '' }}" href="#" data-toggle="dropdown">Nuestros Productos</a>
+                            <div class="dropdown-menu" style="margin-top: -20px;">
+                                <ul class="mega-menu d-lg-flex">
+                                    @for($i = 0; $i < count($globalSections); $i++)
+                                    <li class="mega-menu-col col-lg-3">
+                                        <ul> 
+                                            @foreach ($globalCategories->skip($globalSections[$i])->take(5) as $category)
+                                            <li>
+                                                <a class="nav-link nav_item" href="{{ url('nuestras-categorias/' . $category->slug) }}">{{$category->name}}</a>
+                                            </li>    
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endfor
+                                </ul>
+                            </div>
+                        </li>                        
                         <li><a class="nav-link nav_item" href="{{ url('nosotros') }}">Nosotros</a></li> 
                         <li><a class="nav-link nav_item" href="{{ url('contacto') }}">Contacto</a></li> 
-                        <li><a class="nav-link nav_item" href="#">Mi Cuenta</a></li> 
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ route('login') }}">Mi Cuenta</a>
+                            <div class="dropdown-menu">
+                                <ul> 
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{ route('login') }}">Inicia Sesión</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{ route('register') }}">Regístrate</a></li>
+                                </ul>
+                            </div>   
+                        </li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -158,7 +183,9 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                 	<div class="widget">
                         <div class="footer_logo">
-                            <a href="#"><img src="assets/images/logo_light.png" alt="logo" width="200"></a>
+                            <a href="{{ url('/') }}">
+                                <img src="{{ asset('assets/images/logo_light.png') }}" alt="Airanza Sex Shop Logo" width="200">
+                            </a>
                         </div>
                         <p>Somos una tienda para adultos que ofrece una amplia selección de juguetes sexuales para hombres y mujeres, todo lo que necesita para una experiencia sensual.</p>
                     </div>
@@ -227,34 +254,20 @@
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 
-<!-- Latest jQuery --> 
-<script src="assets/js/jquery-3.6.0.min.js"></script> 
-<!-- popper min js -->
-<script src="assets/js/popper.min.js"></script>
-<!-- Latest compiled and minified Bootstrap --> 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script> 
-<!-- owl-carousel min js  --> 
-<script src="assets/owlcarousel/js/owl.carousel.min.js"></script> 
-<!-- magnific-popup min js  --> 
-<script src="assets/js/magnific-popup.min.js"></script> 
-<!-- waypoints min js  --> 
-<script src="assets/js/waypoints.min.js"></script> 
-<!-- parallax js  --> 
-<script src="assets/js/parallax.js"></script> 
-<!-- countdown js  --> 
-<script src="assets/js/jquery.countdown.min.js"></script> 
-<!-- imagesloaded js --> 
-<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-<!-- isotope min js --> 
-<script src="assets/js/isotope.min.js"></script>
-<!-- jquery.dd.min js -->
-<script src="assets/js/jquery.dd.min.js"></script>
-<!-- slick js -->
-<script src="assets/js/slick.min.js"></script>
-<!-- elevatezoom js -->
-<script src="assets/js/jquery.elevatezoom.js"></script>
-<!-- scripts js --> 
-<script src="assets/js/scripts.js"></script>
+<script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script> 
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script> 
+<script src="{{ asset('assets/owlcarousel/js/owl.carousel.min.js') }}"></script> 
+<script src="{{ asset('assets/js/magnific-popup.min.js') }}"></script> 
+<script src="{{ asset('assets/js/waypoints.min.js') }}"></script> 
+<script src="{{ asset('assets/js/parallax.js') }}"></script> 
+<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script> 
+<script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.elevatezoom.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
 
 </body>
 </html>

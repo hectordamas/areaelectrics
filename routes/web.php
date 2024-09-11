@@ -43,15 +43,16 @@ Route::post('conections/store', [PublicConectionsController::class, 'store']);
 
 Route::post('messages', [PublicMessageController::class, 'store'])->name('messages.store');
 
+Route::get('carrito-de-compras', [CartController::class, 'index']);
+Route::post('cart/addToCart', [CartController::class, 'addToCart']);
+Route::post('cart/updateCartItem', [CartController::class, 'updateCartItem']);
+Route::post('cart/removeCartItem', [CartController::class, 'removeCartItem']);
+Route::get('cart/destroy', [CartController::class, 'destroy']);
+Route::get('finalizar-compra', [CartController::class, 'finalizarCompra']);
+Route::get('checkout', [CartController::class, 'checkout']);
+
 Route::group(['middleware' => ['auth', 'check.active'] ], function(){
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    Route::get('carrito-de-compras', [CartController::class, 'index']);
-    Route::post('cart/addToCart', [CartController::class, 'addToCart']);
-    Route::post('cart/updateCartItem', [CartController::class, 'updateCartItem']);
-    Route::post('cart/removeCartItem', [CartController::class, 'removeCartItem']);
-    Route::get('cart/destroy', [CartController::class, 'destroy']);
-    Route::get('checkout', [CartController::class, 'checkout']);
 
     Route::get('mis-ordenes', [PublicOrdersController::class, 'index']);
     Route::get('detalles-de-orden/{id}', [PublicOrdersController::class, 'show']);
