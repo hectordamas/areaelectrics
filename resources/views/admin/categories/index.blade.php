@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-<title>Fiber Solutions - Lista de Categorias</title>
+<title>{{ env('APP_NAME') }} - Lista de Categorias</title>
 @endsection
 
 @section('content')

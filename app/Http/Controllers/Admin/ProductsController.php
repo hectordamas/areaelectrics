@@ -71,6 +71,24 @@ class ProductsController extends Controller
             }
         }
 
+        // Manejar tallas
+        if ($request->has('sizes')) {
+            foreach ($request->input('sizes') as $size) {
+                $product->specifications()->create([
+                    'name' => $size['size'],
+                ]);
+            }
+        }
+
+        // Manejar Colores
+        if ($request->has('colors')) {
+            foreach ($request->input('colors') as $color) {
+                $product->specifications()->create([
+                    'name' => $color['color'],
+                ]);
+            }
+        }
+
         //El crear productos deberia ir a la pantalla de edicion que se va a crear 
         return redirect('products/' . $product->id . '/edit')->with('message', 'Producto creado con éxito!');
     }    
@@ -117,7 +135,9 @@ class ProductsController extends Controller
         // Manejar especificaciones
 
         // Eliminar especificaciones antiguas
-        $product->specifications()->delete();
+        $product->specifications()->delete();        
+        $product->sizes()->delete();
+        $product->colors()->delete();
 
         // Guardar nuevas especificaciones
         $items = $request->input('item');
@@ -128,6 +148,27 @@ class ProductsController extends Controller
                 $product->specifications()->create([
                     'item' => $items[$i] ,
                     'description' => $descriptions[$i],
+                ]);
+            }
+        }
+
+        // Guardar nuevas tallas
+        $sizes = $request->input('size');
+
+        if(isset($sizes)){
+            for($i = 0; $i < count($sizes); $i++){
+                $product->sizes()->create([
+                    'name' => $sizes[$i] ,
+                ]);
+            }
+        }
+
+        // Guardar nuevas tallas
+        $colors = $request->input('color');
+        if(isset($colors)){
+            for($i = 0; $i < count($colors); $i++){
+                $product->colors()->create([
+                    'name' => $colors[$i],
                 ]);
             }
         }

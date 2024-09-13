@@ -663,7 +663,7 @@
 	//var zoomConfig = {};
 	var zoomActive = false;
 	
-    zoomActive = !zoomActive;
+    zoomActive = zoomActive;
 	if(zoomActive) {
 		if ($(image).length > 0){
 			$(image).elevateZoom({

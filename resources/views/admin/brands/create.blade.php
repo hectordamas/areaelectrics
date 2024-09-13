@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-<title>Fiber Solutions - Registrar Marca</title>
+<title>{{ env('APP_NAME') }} - Registrar Marca</title>
 @endsection
 @section('content')
 <div class="container-fluid">

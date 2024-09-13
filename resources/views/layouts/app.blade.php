@@ -71,7 +71,18 @@
                 	<div class="text-center text-md-right">
                        	<ul class="header_list">
                             <li><a href="{{ url('wishlist') }}"><i class="ti-heart"></i><span>Lista de Favoritos</span></a></li>
+                            @auth
+                            <li class="d-none d-md-inline-block">
+                                <form action="{{ route('logout') }}" id="logout-form" method="post">
+                                    @csrf
+                                    <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span>
+                                    </a>
+                                </form>
+                            </li>
+                            @else
                             <li><a href="{{ route('login') }}"><i class="ti-user"></i><span>Inicia Sesión</span></a></li>
+                            @endauth
 						</ul>
                     </div>
                 </div>
@@ -112,6 +123,27 @@
                         </li>                        
                         <li><a class="nav-link nav_item" href="{{ url('nosotros') }}">Nosotros</a></li> 
                         <li><a class="nav-link nav_item" href="{{ url('contacto') }}">Contacto</a></li> 
+                        @auth
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
+                            <div class="dropdown-menu">
+                                <ul> 
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{ url('mis-ordenes') }}">Mis Órdenes</a></li> 
+                                    @if(Auth::user()->role == 'Administrador')
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{ url('home') }}">Administrador</a></li> 
+                                    @endif
+                                    <li>
+                                        <form action="{{ route('logout') }}" id="logout" method="post">
+                                            @csrf
+                                        </form>
+                                        <a class="dropdown-item nav-link nav_item" href="javascript:void(0);" onclick="document.getElementById('logout').submit();">
+                                            Cerrar Sesión
+                                        </a>
+                                    </li> 
+                                </ul>
+                            </div>   
+                        </li>
+                        @else
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ route('login') }}">Mi Cuenta</a>
                             <div class="dropdown-menu">
@@ -121,19 +153,20 @@
                                 </ul>
                             </div>   
                         </li>
+                        @endauth
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
                     <li><a href="javascript:void(0);" class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
                         <div class="search_wrap">
                             <span class="close-search"><i class="ion-ios-close-empty"></i></span>
-                            <form>
-                                <input type="text" placeholder="Search" class="form-control" id="search_input">
+                            <form action="{{ url('buscar') }}">
+                                <input type="text" placeholder="Buscar Productos" class="form-control" id="search_input" name="search">
                                 <button type="submit" class="search_icon"><i class="ion-ios-search-strong"></i></button>
                             </form>
-                        </div><div class="search_overlay"></div>
+                        </div><div class="search_overlay"></div><div class="search_overlay"></div>
                     </li>
-                    <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
+                    <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{ Cart::count() }}</span></a>
                         <div class="cart_box dropdown-menu dropdown-menu-right">
                             <ul class="cart_list">
                                 @forelse(Cart::content()->reverse()->take(2)->reverse() as $cartItem)
@@ -267,7 +300,36 @@
 <script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
 <script src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.elevatezoom.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
+
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
+
+@if(session()->has('error'))
+<script>
+    var colorError = '#dc3545';
+    Swal.fire({
+        icon:'error', 
+        title:'Ha ocurrido un error!', 
+        text: "{{ session('error') }}", 
+        confirmButtonText: "OK", 
+        confirmButtonColor: colorError
+    })
+</script>
+@endif
+
+@if(session()->has('message'))
+<script>
+    var colorSuccess = '#28a745';
+    Swal.fire({
+        icon:'success', 
+        title:'', 
+        text: "{{ session('message') }}", 
+        confirmButtonText: 'OK', 
+        confirmButtonColor: colorSuccess
+    })
+</script>
+@endif
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-<title>Fiber Solutions - Resultados de Consulta Productos</title>
+<title>{{ env('APP_NAME') }}  - Resultados de Consulta Productos</title>
 @endsection
 
 @section('content')

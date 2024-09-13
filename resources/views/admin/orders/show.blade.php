@@ -45,8 +45,8 @@
             <ul>
                 <li><strong>Nombre:</strong> {{ $order->user->name }}</li>
                 <li><strong>Email:</strong> {{ $order->user->email }}</li>
-                <li><strong>Teléfono:</strong> {{ $order->user->conection ? $order->user->conection->telephone : 'No registrado'}}</li>
-                <li><strong>Empresa:</strong> {{ $order->user->conection ? $order->user->conection->company : 'No registrado' }}</li>
+                <li><strong>Teléfono:</strong> {{ $order->user->telephone ?: 'No registrado'}}</li>
+                <li><strong>Direccion:</strong> {{ $order->user->address ?: 'No registrado'}}</li>
                 <!-- Agrega otros detalles del cliente que sean relevantes -->
             </ul>
         </div>

@@ -29,18 +29,51 @@
             </div>
             <div class="col-lg-7 col-md-7">
                 <div class="product_description">
-                    <h4 class="product_title"><a href="#" class="text-capitalize">{{ $product->name }}</a></h4>
-                    @auth
-                        <div class="product_price">
-                            <span class="price">${{ number_format($product->price, 2, ',', '.') }}</span>
-                            <del>${{ number_format($product->price * 1.10, 2, ',', '.') }}</del>
+                    <h4 class="product_title">
+                        <a href="#" class="text-capitalize">{{ $product->name }}</a>
+                    </h4>
+                    <div class="product_price">
+                        <span class="price" style="font-size: 26px;">${{ number_format($product->price, 2, ',', '.') }}</span>
+                        <del>${{ number_format($product->price * 1.10, 2, ',', '.') }}</del>
+                    </div>
+
+                    @if($product->colors->count() > 0 || $product->sizes->count() > 0)
+                    <hr>
+                    @endif
+
+                    @if($product->colors->count() > 0)
+                    <div class="pr_switch_wrap form-group">
+                        <span class="switch_lable">Color: </span>
+                        <div class="product_color_switch">
+                            <input type="hidden" id="color" name="color" value="{{ $product->colors->first()->name }}">                            
+                            @foreach($product->colors as $color)
+                                <span 
+                                    class="{{ $loop->first ? 'active' : '' }} selectColor" 
+                                    data-color="{{ $color->name }}"></span>
+                            @endforeach
                         </div>
-                    @endauth
+                    </div>
+                    @endif
+
+                    @if($product->sizes->count() > 0)
+                    <div class="pr_switch_wrap form-group">
+                        <span class="switch_lable">Talla: </span>
+                        <div class="product_size_switch">
+                            <input type="hidden" id="size" name="size" value="{{ $product->sizes->first()->name }}">
+                            @foreach($product->sizes as $size)
+                                <span 
+                                    class="selectSize" 
+                                    data-size="{{ $size->name }}">{{$size->name}}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
+
                 </div>
 
                 <hr>
+
                 <div class="cart_extra">
-                    @auth
                     <input type="hidden" id="id" name="id" value="{{ $product->id }}">
                     <input type="hidden" id="name" name="name" value="{{ $product->name }}">
                     <input type="hidden" id="price" name="price" value="{{ $product->price }}">
@@ -57,12 +90,6 @@
                             <i class="icon-basket-loaded"></i> Añadir al Carrito
                         </button>
                     </div>
-                    @else
-                    <a href="{{ url('login') }}" class="btn btn-fill-line btn-radius">
-                        <i class="linearicons-user"></i>
-                        Inicia Sesión para Ordenar
-                    </a>
-                    @endif
                 </div>
                 <hr>
 

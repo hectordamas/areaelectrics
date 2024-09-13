@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-<title>Fiber Solutions - Cargar Producto</title>
+<title>{{ env('APP_NAME') }} - Cargar Producto</title>
 @endsection
 
 @section('content')
@@ -96,6 +96,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="specifications-tab" data-toggle="tab" href="#specifications" role="tab" aria-controls="specifications" aria-selected="false">Especificaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="sizes-tab" data-toggle="tab" href="#sizes" role="tab" aria-controls="sizes" aria-selected="false">Tallas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="colors-tab" data-toggle="tab" href="#colors" role="tab" aria-controls="colors" aria-selected="false">Colores</a>
                 </li>
             </ul>
             <!-- Tab content -->
@@ -197,6 +203,36 @@
                                 </div>
                                 <div class="card-body">
                                     @include('components.specifications')
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+
+                <div class="tab-pane fade" id="sizes" role="tabpanel" aria-labelledby="sizes-tab">
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="card shadow">
+                                <div class="card-header font-weight-bold text-primary">
+                                    Tallas
+                                </div>
+                                <div class="card-body">
+                                    @include('components.sizes')
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+
+                <div class="tab-pane fade" id="colors" role="tabpanel" aria-labelledby="colors-tab">
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="card shadow">
+                                <div class="card-header font-weight-bold text-primary">
+                                    Colores
+                                </div>
+                                <div class="card-body">
+                                    @include('components.colors')
                                 </div>
                             </div>
                         </div>

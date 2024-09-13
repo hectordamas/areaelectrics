@@ -26,22 +26,34 @@
 
 
 <!-- START SECTION SHOP -->
-<div class="section">
+<div class="section pt_small">
 	<div class="container">
+        @guest
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
             	<div class="toggle_info">
-                	<span><i class="fas fa-user"></i>Ya estás registrado? <a href="#loginform" data-toggle="collapse" class="collapsed" aria-expanded="false">Haz Click Aqui para Iniciar Sesión</a></span>
+                	<span><i class="fas fa-user"></i>Ya estás registrado? <a href="#loginform" data-toggle="collapse" class="collapsed" aria-expanded="false">Haz click aquí para iniciar sesión</a></span>
                 </div>
-                <div class="panel-collapse collapse login_form" id="loginform">
+                <div class="panel-collapse collapse login_form"  style="max-width: 500px;" id="loginform">
                     <div class="panel-body">
                         <p>Si has comprado con nosotros antes, por favor ingresa tus datos a continuación. Si eres un nuevo cliente, por favor procede a tu registro en la sección de "Completa Tu Información".</p>
-                    	<form method="post">
+                    	<form method="post" action="{{ url('loginToOrder') }}">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" required="" class="form-control" name="email" placeholder="Username Or Email">
+                                <input type="text" required class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Correo Electrónico">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" required="" type="password" name="password" placeholder="Password">
+                                <input type="password" required class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Contraseña">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="login_footer form-group">
                                 <div class="chek-form">
@@ -53,7 +65,7 @@
                                 <a href="{{ route('password.request') }}">Olvidaste tu Contraseña?</a>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-fill-out btn-block" name="login">Inicia Sesión</button>
+                                <button type="submit" class="btn btn-fill-out btn-block" name="login">Iniciar Sesión y Finalizar compra</button>
                             </div>
                         </form>
                     </div>
@@ -67,29 +79,66 @@
             	<div class="medium_divider"></div>
             </div>
         </div>
-        <div class="row">
+        @endguest
+
+        <form class="row" action="{{ url('registerToOrder') }}" method="POST">
+            @csrf
+            @guest
         	<div class="col-md-6">
             	<div class="heading_s1">
             		<h4>Completa tu Información</h4>
                 </div>
-                <form method="post">
+                <div>
                     <div class="form-group">
-                        <input type="text" required class="form-control" name="name" placeholder="Nombre Completo *">
+                        <input type="text" required class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nombre Completo *">
+                        
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="address" required placeholder="Dirección *">
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" required placeholder="Dirección *">
+                        
+                        @error('address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input class="form-control" required type="text" name="telephone" placeholder="Teléfono *">
+                        <input class="form-control @error('telephone') is-invalid @enderror" required type="text" name="telephone" placeholder="Teléfono *">
+                        
+                        @error('telephone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input class="form-control" required type="text" name="email" placeholder="Correo Electrónico *">
+                        <input class="form-control @error('email') is-invalid @enderror" required type="text" name="email" placeholder="Correo Electrónico *">
+                        
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input class="form-control" required type="password" placeholder="Contraseña" name="password" >
+                        <input class="form-control @error('password') is-invalid @enderror" required type="password" placeholder="Contraseña" name="password" >
+                        
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                </form>
+                </div>
             </div>
+            @endguest
+
+
             <div class="col-md-6">
                 <div class="order_review">
                     <div class="heading_s1">
@@ -133,10 +182,18 @@
                             </tfoot>
                         </table>
                     </div>
-                    <a href="{{ url('checkout') }}" class="btn btn-fill-out btn-block">Finalizar Compra</a>
+                    @auth
+                        <a href="{{ url('checkout') }}" class="btn btn-fill-out btn-block">
+                            <i class="icon-basket-loaded"></i> Finalizar Compra
+                        </a>   
+                    @else     
+                        <button type="submit" class="btn btn-fill-out btn-block">
+                            <i class="icon-basket-loaded"></i> Finalizar Compra
+                        </button>                
+                    @endauth
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <!-- END SECTION SHOP -->

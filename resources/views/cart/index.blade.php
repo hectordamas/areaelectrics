@@ -117,7 +117,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ url('checkout') }}" class="btn btn-fill-out">Finalizar Orden</a>
+                    <a href="{{ Auth::check() ? url('checkout') : url('finalizar-compra') }}" class="btn btn-fill-out">Finalizar Orden</a>
                 </div>
             </div>
         </div>

@@ -37,19 +37,9 @@ class UsersController extends Controller
         if($request->password){
             $user->password = bcrypt($request->password);
         }
+        $user->telephone = $request->telephone;
+        $user->address = $request->address;
         $user->save();
-
-        $conection = new Conection();
-        $conection->name = $request->name;
-        $conection->email = $request->email;
-        $conection->company = $request->company;
-        $conection->telephone = $request->telephone;
-        $conection->identification = $request->identification;
-        $conection->user_id = $user->id;
-        $conection->shippingAddress = $request->shippingAddress;
-        $conection->billingAddress = $request->billingAddress;
-        $conection->is_read = true;
-        $conection->save();
 
         return redirect('admin/users')->with('message', 'Usuario registrado con éxito!');
     }
@@ -72,18 +62,9 @@ class UsersController extends Controller
         if($request->password){
             $user->password = bcrypt($request->password);
         }
+        $user->telephone = $request->telephone;
+        $user->address = $request->address;
         $user->save();
-
-        $conection = $user->conection;
-        $conection->name = $request->name;
-        $conection->company = $request->company;
-        $conection->identification = $request->identification;
-        $conection->email = $request->email;
-        $conection->telephone = $request->telephone;
-        $conection->shippingAddress = $request->shippingAddress;
-        $conection->billingAddress = $request->billingAddress;
-        $conection->is_read = true;
-        $conection->save();
 
         return redirect()->back()->with('message', 'Usuario modificado con exito!');
     }

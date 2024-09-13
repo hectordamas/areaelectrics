@@ -81,6 +81,58 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Tallas
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('add-size').addEventListener('click', function() {
+        var container = document.getElementById('sizes-container');
+        var item = document.createElement('div');
+        item.className = 'row mb-1 size-item';
+        item.innerHTML = `
+            <div class="col-md-5 form-group">
+                <input type="text" required name="size[]" class="form-control" placeholder="Talla" />
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-sm remove-size">
+                    <i class="far fa-trash-alt"></i> Eliminar
+                </button>
+            </div>
+        `;
+        container.appendChild(item);
+    });
+
+    document.getElementById('sizes-container').addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-size')) {
+            e.target.closest('.size-item').remove();
+        }
+    });
+});
+
+//Colores
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('add-color').addEventListener('click', function() {
+        var container = document.getElementById('colors-container');
+        var item = document.createElement('div');
+        item.className = 'row mb-1 color-item';
+        item.innerHTML = `
+            <div class="col-md-5 form-group">
+                <input type="color" required name="color[]" class="form-control" placeholder="Colores" />
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-sm remove-color">
+                    <i class="far fa-trash-alt"></i> Eliminar
+                </button>
+            </div>
+        `;
+        container.appendChild(item);
+    });
+
+    document.getElementById('colors-container').addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-color')) {
+            e.target.closest('.color-item').remove();
+        }
+    });
+});
+
 $(document).ready(function(){
     //Summernote
     if ($('#summernote')) {

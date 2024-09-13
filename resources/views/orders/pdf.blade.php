@@ -50,7 +50,7 @@
                 <img src="{!! public_path('assets/images/logo_dark.png') !!}" width="150" class="logo"/>
             </td>
             <td align="left" width="33%">
-                <strong>E-Mail:</strong> info@fibersolutions.com.ve <br>
+                <strong>E-Mail:</strong> info@airanzasexshop.com.ve <br>
                 <strong>Whatsapp: </strong> +58414-1107270 <br>
             </td>
             <td align="left" width="30%">

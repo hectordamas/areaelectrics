@@ -27,26 +27,13 @@
                             <input type="password" required class="form-control" name="password">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="identification" class="text-primary font-weight-bold">Cedula - RIF</label>
-                            <input type="text" required class="form-control" name="identification">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="company" class="text-primary font-weight-bold">Empresa</label>
-                            <input type="text" required class="form-control" name="company">
-                        </div>
-                        <div class="form-group col-md-3">
                             <label for="telephone" class="text-primary font-weight-bold">Telefono</label>
                             <input type="text" required class="form-control" name="telephone">
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="billingAddress" class="text-primary font-weight-bold">Dirección de Faturación</label>
-                            <input type="text" required class="form-control" name="billingAddress">
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label for="shippingAddress" class="text-primary font-weight-bold">Dirección de Envío</label>
-                            <input type="text" required class="form-control" name="shippingAddress">
+                            <label for="address" class="text-primary font-weight-bold">Dirección</label>
+                            <input type="text" required class="form-control" name="address">
                         </div>
 
                         <div class="form-group col-md-3">

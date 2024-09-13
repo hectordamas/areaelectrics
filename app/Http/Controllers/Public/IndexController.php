@@ -14,15 +14,13 @@ class IndexController extends Controller
         ->get()
         ->take(12);
 
-        $productsRouters = Category::find(1)
-        ->products()
-        ->inRandomOrder()
+        $latestProducts = Product::orderBy('id', 'desc')
         ->get()
         ->take(12);
 
         return view('welcome', [
             'products' => $products,
-            'productsRouters' => $productsRouters
+            'latestProducts' => $latestProducts
         ]);
     }
 }

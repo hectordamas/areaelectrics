@@ -73,8 +73,7 @@
 <div class="section pt-0">
 	<div class="container">
     	<div class="row">
-
-            <div class="d-none d-lg-block col-lg-6 pt-2 pt-lg-0 mt-4 mt-lg-0 pb-md-0 pb-5">
+            <div class="d-none d-lg-block col-lg-6 pt-0 mt-0 pb-0">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.136273377976!2d-66.87104550812094!3d10.489922006542878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a590045bc2a7b%3A0x1a8393d7e24e1c91!2sAngel%20de%20la%20Suerte!5e0!3m2!1ses-419!2sve!4v1725644162922!5m2!1ses-419!2sve" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            
             </div>
             <div class="col-lg-6 pl-md-4">
@@ -88,7 +87,7 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <input required placeholder="Nombre *" id="first-name" class="form-control" name="name" type="text">
-                             </div>
+                            </div>
                             <div class="form-group col-md-6">
                                 <input required placeholder="E-Mail *" id="email" class="form-control" name="email" type="email">
                             </div>
@@ -102,7 +101,9 @@
                                 <textarea required placeholder="Mensaje *" id="description" class="form-control" name="message" rows="4"></textarea>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-fill-out">Enviar Mensaje</button>
+                                <button type="submit" class="btn btn-fill-out">
+                                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                                </button>
                             </div>
                         </div>
                     </form>		

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-<title>Fiber Solutions - Registrar Categoria</title>
+<title>{{ env('APP_NAME') }} - Registrar Categoria</title>
 @endsection
 
 @section('content')

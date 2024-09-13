@@ -118,14 +118,6 @@
                 </a>
             </li>
 
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('conections.index') }}">
-                    <i class="fas fa-fw fa-bell"></i>
-                    <span>Solicitudes</span>
-                </a>
-            </li>
-
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -185,7 +177,9 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw text-primary"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">{{ $unreadNotifications }}</span>
+                                @if(!(intval($unreadNotifications) == 0))
+                                    <span class="badge badge-danger badge-counter">{{ $unreadNotifications }}</span>
+                                @endif
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -221,9 +215,6 @@
                                 <a class="dropdown-item text-center text-uppercase font-weight-bold" href="{{ url('orders') }}">
                                     <span style="font-size: 11px; font-weight:900;">Todas las Órdenes</span> 
                                 </a>
-                                <a class="dropdown-item text-center text-uppercase font-weight-bold" href="{{ route('conections.index') }}">
-                                    <span style="font-size: 11px; font-weight:900;">Todas las Solicitudes</span> 
-                                </a>
                             </div>
                         </li>
 
@@ -233,7 +224,9 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw text-primary"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">{{ $unreadMessages }}</span>
+                                @if(!(intval($unreadMessages) == 0))
+                                    <span class="badge badge-danger badge-counter">{{ $unreadMessages }}</span>
+                                @endif
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"

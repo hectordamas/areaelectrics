@@ -40,7 +40,7 @@
             padding: 20px;
         }
         .content h2 {
-            color: #007bff;
+            color: #001933;
             font-size: 20px;
             margin-bottom: 15px;
         }
@@ -49,7 +49,7 @@
             margin: 5px 0;
         }
         .content p strong {
-            color: #007bff;
+            color: #001730;
         }
         .footer {
             background-color: #f1f1f1;

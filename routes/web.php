@@ -16,8 +16,7 @@ use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\OrdersController;
-use App\Http\Controllers\Admin\ConectionsController;
-use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\UsersController;
 
 //Rutas Publicas
@@ -39,9 +38,7 @@ Route::get('nuestros-productos/{slug}', [PublicProductsController::class, 'show'
 Route::get('nuestras-marcas/{slug}', [PublicBrandsController::class, 'index']);
 Route::get('nuestras-categorias/{slug}', [PublicCategoriesController::class, 'index']);
 
-Route::post('conections/store', [PublicConectionsController::class, 'store']);
-
-Route::post('messages', [PublicMessageController::class, 'store'])->name('messages.store');
+Route::post('messages', [PublicMessagesController::class, 'store'])->name('messages.store');
 
 Route::get('carrito-de-compras', [CartController::class, 'index']);
 Route::post('cart/addToCart', [CartController::class, 'addToCart']);
@@ -51,13 +48,15 @@ Route::get('cart/destroy', [CartController::class, 'destroy']);
 Route::get('finalizar-compra', [CartController::class, 'finalizarCompra']);
 Route::get('checkout', [CartController::class, 'checkout']);
 
+Route::post('registerToOrder', [PublicOrdersController::class, 'registerToOrder']);
+Route::post('loginToOrder', [PublicOrdersController::class, 'loginToOrder']);
+
 Route::group(['middleware' => ['auth', 'check.active'] ], function(){
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('mis-ordenes', [PublicOrdersController::class, 'index']);
     Route::get('detalles-de-orden/{id}', [PublicOrdersController::class, 'show']);
     Route::get('downloadInvoice/{id}', [PublicOrdersController::class, 'downloadInvoice']);
-
 
     Route::get('completed', function(){
         return view('orders.completed');
@@ -106,8 +105,8 @@ Route::group(['middleware' => ['auth', 'admin'] ], function(){
     Route::get('admin/conections/{id}', [ConectionsController::class, 'show'])->name('conections.show');
     Route::post('admin/conections/{id}/approve', [ConectionsController::class, 'approve'])->name('conections.approve');
 
-    Route::get('messages', [MessageController::class, 'index'])->name('messages.index');
-    Route::get('messages/{id}', [MessageController::class, 'show'])->name('messages.show');
+    Route::get('messages', [MessagesController::class, 'index'])->name('messages.index');
+    Route::get('messages/{id}', [MessagesController::class, 'show'])->name('messages.show');
 
     Route::get('admin/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('admin/users/create', [UsersController::class, 'create'])->name('users.create');

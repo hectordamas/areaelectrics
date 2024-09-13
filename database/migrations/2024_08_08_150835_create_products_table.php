@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string("slug")->nullable();
 
             $table->string('hidden')->nullable();
+
+            $table->string('youtube_id')->nullable();
              
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->foreign('brand_id')->references('id')->on('brands');

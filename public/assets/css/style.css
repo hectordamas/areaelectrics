@@ -7210,3 +7210,11 @@ blockquote p:last-child {
 /*===================================*
   24.END ELEMENT DESIGN
 *===================================*/
+  /*Ver Más*/
+  .see-more{
+	display: none;
+  }
+
+  .product:hover .see-more{
+	display: inline-block;
+}

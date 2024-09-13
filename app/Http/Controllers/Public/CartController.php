@@ -126,6 +126,7 @@ class CartController extends Controller
 
     public function destroy(){
         Cart::destroy();
+        
         return redirect()->back()->with('message', 'Carrito Vaciado con éxito!');
     }
 }

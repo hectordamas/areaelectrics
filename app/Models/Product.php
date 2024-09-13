@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Order;
 use App\Models\ProductSpecification;
+use App\Models\Color;
+use App\Models\Size;
 
 class Product extends Model
 {
@@ -35,6 +37,16 @@ class Product extends Model
     public function specifications()
     {
         return $this->hasMany(ProductSpecification::class);
+    }
+
+    public function sizes()
+    {
+        return $this->hasMany(Size::class);
+    }
+
+    public function colors()
+    {
+        return $this->hasMany(Color::class);
     }
 
     // Scope para filtrar por nombre
