@@ -14,7 +14,7 @@ use Auth;
 
 class CartController extends Controller
 {
-    private function add($id, $name, $quantity, $price, $image){
+    private function add($id, $name, $quantity, $price, $image, $color, $size){
         Cart::add([
             'id' => $id, 
             'name' => $name, 
@@ -22,7 +22,9 @@ class CartController extends Controller
             'price' => $price,
             'weight' => 0, 
             'options' => [
-                'image' => $image
+                'image' => $image,
+                'color' => $color ?: null,
+                'size' => $size ?: null
             ]
         ]);
     }
@@ -33,11 +35,14 @@ class CartController extends Controller
 
     public function addToCart(Request $request){
         if($request->name && $request->price && $request->image){
-            $this->add($request->id, $request->name, $request->quantity, $request->price, $request->image);
+            $this->add($request->id, $request->name, $request->quantity, $request->price, $request->image, $request->color, $request->size);
         }else{
             $product = Product::find($request->id);
-            $image = $product->images()->count() > 0 ? $product->images()->first()->url : null;
-            $this->add($request->id, $product->name, $request->quantity, $product->price, $image);
+            $image = null;
+            if($product->images()->count() > 0){
+                $image = $product->images()->first()->url;
+            }
+            $this->add($request->id, $product->name, $request->quantity, $product->price, $image, $request->color, $request->size);
         }
 
         $count = Cart::count();
@@ -108,7 +113,9 @@ class CartController extends Controller
 
         foreach($cartItems as $item){
             $order->products()->attach($item->id, [
-                'quantity' => $item->qty
+                'quantity' => $item->qty,
+                'color' => isset($item->options['color']) ? null : $item->options['color'],
+                'size' => isset($item->options['size']) ? null : $item->options['size'] 
             ]);
         }
 

@@ -2,7 +2,7 @@
     @if(isset($product))
         @foreach($product->sizes as $size)
             <div class="row mb-1 size-item">
-                <div class="col-md-5 form-group">
+                <div class="col-md-3 form-group">
                     <input type="text" required name="size[]" class="form-control" value="{{ $size->name }}" placeholder="Agrega una Talla" />
                 </div>
                 <div class="col-md-2">

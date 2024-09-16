@@ -71,6 +71,8 @@
         <thead style="background: #2d3748;">
             <tr>
                 <th style="color: #fff;">Descripción</th>
+                <th style="color: #fff;">Talla</th>
+                <th style="color: #fff;">Color</th>
                 <th style="color: #fff;">Precio</th>
                 <th style="color: #fff;">Cantidad</th>
                 <th style="color: #fff;">Total</th>
@@ -80,6 +82,14 @@
             @foreach($order->products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
+                    <td>{!! $product->pivot->size ?: 'N/A' !!}</td>
+                    <td>
+                        @if($product->pivot->color)
+                            <div href="#" class="ml-auto mx-md-auto" style="background-color: {{ $product->pivot->color }}; width: 20px; height: 20px; border-radius: 100%;"></div>
+                        @else
+                            N/A
+                        @endif
+                    </td>                    
                     <td>${{ number_format($product->price, 2, '.', ',') }}</td>
                     <td>{{ $product->pivot->quantity }}</td>
                     <td>${{ number_format($product->pivot->quantity * $product->price, 2, '.', ',') }}</td>

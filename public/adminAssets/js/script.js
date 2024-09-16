@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var item = document.createElement('div');
         item.className = 'row mb-1 size-item';
         item.innerHTML = `
-            <div class="col-md-5 form-group">
-                <input type="text" required name="size[]" class="form-control" placeholder="Talla" />
+            <div class="col-md-3 form-group">
+                <input type="text" required name="size[]" class="form-control" placeholder="Agregar Talla" />
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger btn-sm remove-size">
@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var item = document.createElement('div');
         item.className = 'row mb-1 color-item';
         item.innerHTML = `
-            <div class="col-md-5 form-group">
-                <input type="color" required name="color[]" class="form-control" placeholder="Colores" />
+            <div class="col-md-3 form-group">
+                <input type="color" required name="color[]" class="form-control" />
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger btn-sm remove-color">

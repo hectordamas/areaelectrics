@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('metadata')
-<title>{{ env('APP_NAME') }} - {{ $product->name }}</title>
+<title>{{ env('APP_NAME') }} - {{ ucwords(strtolower($product->name)) }}</title>
 <meta name="description" content="{{ $product->description }} Compra {{ $product->name }} en nuestra tienda online. Encuentra más productos de {{ $product->brand->name }} y categorías como {{ $product->categories->pluck('name')->join(', ') }}.">
 <meta name="keywords" content="{{ $product->name }}, {{ $product->brand->name }}, {{ $product->categories->pluck('name')->join(', ') }}, redes, cable, cables, fibra óptica, iluminación, tienda en línea, distribuidor mayorista, seguridad, cctv, marcas, {{ $product->brand->name }}">
 @endsection
@@ -62,7 +62,7 @@
                             <input type="hidden" id="size" name="size" value="{{ $product->sizes->first()->name }}">
                             @foreach($product->sizes as $size)
                                 <span 
-                                    class="selectSize" 
+                                    class="{{ $loop->first ? 'active' : '' }} selectSize" 
                                     data-size="{{ $size->name }}">{{$size->name}}</span>
                             @endforeach
                         </div>

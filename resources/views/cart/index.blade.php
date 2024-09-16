@@ -35,6 +35,8 @@
                         	<tr>
                             	<th class="product-thumbnail">&nbsp;</th>
                                 <th class="product-name">Producto</th>
+                                <th class="product-size">Talla</th>
+                                <th class="product-color">Color</th>
                                 <th class="product-price">Precio</th>
                                 <th class="product-quantity">Cantidad</th>
                                 <th class="product-subtotal">Total</th>
@@ -51,6 +53,14 @@
                                     <a href="#"><img src="{{ isset($item->options['image']) ? $item->options['image'] : null }}" alt="product1"></a>
                                 </td>
                                 <td class="product-name" data-title="Producto"><a href="#">{{ $item->name }}</a></td>
+                                <td class="product-size" data-title="Talla"><a href="#">{{ isset($item->options['size']) ? $item->options['size'] : 'N/A' }}</a></td>
+                                <td class="product-color" data-title="Color">
+                                    @if(isset($item->options['color']))
+                                        <div href="#" class="ml-auto mx-md-auto" style="background-color: {{ $item->options['color'] }}; width: 20px; height: 20px; border-radius: 100%;"></div>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td class="product-price" data-title="Precio">${{ $item->price }}</td>
                                 <td class="product-quantity product-quantity-{{$item->rowId}}" data-title="Cantidad">
                                     {{ $item->qty }}
@@ -70,12 +80,12 @@
                             @endforeach
                             <tfoot>
                                 <tr>
-                                    <td colspan="7" class="px-0">
+                                    <td colspan="9" class="px-0">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
                                             </div>
                                             <div class="col-lg-8 col-md-6 text-left text-md-right">
-                                                <a href="cart/destroy" class="btn btn-fill-line">
+                                                <a href="{{ url('cart/destroy') }}" class="btn btn-fill-line">
                                                     <i class="icon-basket-loaded" style="font-size:20px;"></i> Vaciar Carrito
                                                 </a>
                                             </div>

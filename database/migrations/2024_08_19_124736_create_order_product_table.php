@@ -16,6 +16,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->bigInteger('quantity')->unsigned();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
 
             $table->bigInteger('order_id')->unsigned()->nullable();
             $table->foreign('order_id')->references('id')->on('orders');

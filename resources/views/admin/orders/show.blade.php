@@ -63,6 +63,8 @@
                     <thead class="table-dark bg-primary">
                         <tr>
                             <th>Producto</th>
+                            <th>Talla</th>
+                            <th>Color</th>
                             <th>Cantidad</th>
                             <th>Precio Unitario</th>
                             <th>Total</th>
@@ -72,6 +74,14 @@
                         @foreach($order->products as $product)
                             <tr>
                                 <td class="text-primary">{{ $product->name }}</td>
+                                <td>{!! $product->pivot->size ?: 'N/A' !!}</td>
+                                <td>
+                                    @if($product->pivot->color)
+                                        <div href="#" class="ml-auto mx-md-auto" style="background-color: {{ $product->pivot->color }}; width: 20px; height: 20px; border-radius: 100%;"></div>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td class="text-primary">{{ $product->pivot->quantity }}</td>
                                 <td class="text-primary">${{ number_format($product->price, 2, '.', ',') }}</td>
                                 <td class="text-primary">${{ number_format($product->price * $product->pivot->quantity, 2, '.', ',') }}</td>
