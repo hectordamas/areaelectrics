@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Iniciar Sesión</title>
-<meta name="description" content="Shopwise is Powerful features and You Can Use The Perfect Build this Template For Any eCommerce Website. The template is built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods.">
-<meta name="keywords" content="ecommerce, electronics store, Fashion store, furniture store,  bootstrap 4, clean, minimal, modern, online store, responsive, retail, shopping, ecommerce store">
+<meta name="description" content="Inicia Sesión en Airanza Sex Shop.">
+<meta name="keywords" content="inicia sesion, login, dildos, juguetes sexuales, shop, ecommerce, ingresar, airanza sex shop">
 @endsection
 @section('content')
 <div class="login_register_wrap section">

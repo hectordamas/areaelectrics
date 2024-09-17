@@ -2,8 +2,8 @@
 
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Acerca de {{ env('APP_NAME') }}</title>
-<meta name="description" content="Somos una empresa venezolana especializada en la distribución de productos de red, iluminación y fibra óptica. Nos destacamos por ofrecer a nuestros distribuidores autorizados las marcas líderes del mercado venezolano, como Wireplus, TP-Link, Mercusys, Ezviz, Hikvision, entre otras.">
-<meta name="keywords" content="nosotros, acerca de, ecommerce, tienda en linea, ezviz, wireplus, fibra optica, redes, mayorista, distribucion, red, iluminacion, cables">
+<meta name="description" content="En Airanza Sex Shop, nos dedicamos a mejorar la vida íntima de nuestros clientes con una amplia gama de productos diseñados para el placer. Ofrecemos una selección curada de juguetes sexuales para todos los gustos y preferencias, con un enfoque en calidad, seguridad y discreción.">
+<meta name="keywords" content="Airanza Sex Shop, juguetes sexuales, productos íntimos, tienda para adultos, calidad y seguridad, discreción, atención al cliente, productos para el placer, dildos, plug, anales, vibradores, lenceria">
 @endsection
 
 @section('content')

@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('metadata')
-<title>{{ env('APP_NAME') }} - Rompe El Tabú</title>
-<meta name="description" content="Somos una empresa venezolana especializada en la distribución de productos de red, iluminación y fibra óptica. Nos destacamos por ofrecer a nuestros distribuidores autorizados las marcas líderes del mercado venezolano, como Wireplus, TP-Link, Mercusys, Ezviz, Hikvision, entre otras.">
-<meta name="keywords" content="nosotros, acerca de, ecommerce, tienda en linea, ezviz, wireplus, fibra optica, redes, mayorista, distribucion, red, iluminacion, cables">
+<title>{{ env('APP_NAME') }} - Juguetes Sexuales y Lencería en Venezuela | Rompe el Tabú</title>
+<meta name="description" content="Encuentra los mejores juguetes sexuales, lencería y productos para adultos en Venezuela. Airan Sex Shop te ofrece discreción, calidad y envíos a nivel nacional. Rompe el tabú y vive nuevas experiencias.">
+<meta name="keywords" content="juguetes sexuales, lencería, sex shop, vibradores, placer, juguetes para adultos, tienda en línea, productos eróticos, Venezuela, discreción, envío nacional">
+<meta property="og:title" content="Airan Sex Shop - Juguetes Sexuales y Lencería en Venezuela">
+<meta property="og:description" content="Descubre juguetes sexuales, lencería y productos para adultos en nuestra tienda en línea. Discreción garantizada y envíos a nivel nacional. Rompe el tabú con Airan Sex Shop.">
+<meta property="og:image" content="{{ asset('assets/images/logo_dark.png') }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="website">
 @endsection
 @section('content')
 <!-- START SECTION BANNER -->

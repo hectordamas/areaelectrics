@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('metadata')
 <title>{{ env('APP_NAME') }} - {{ ucwords(strtolower($product->name)) }}</title>
-<meta name="description" content="{{ $product->description }} Compra {{ $product->name }} en nuestra tienda online. Encuentra más productos de {{ $product->brand->name }} y categorías como {{ $product->categories->pluck('name')->join(', ') }}.">
-<meta name="keywords" content="{{ $product->name }}, {{ $product->brand->name }}, {{ $product->categories->pluck('name')->join(', ') }}, redes, cable, cables, fibra óptica, iluminación, tienda en línea, distribuidor mayorista, seguridad, cctv, marcas, {{ $product->brand->name }}">
+<meta name="description" content="{{ $product->description }} Compra {{ $product->name }} en nuestra tienda online. Encuentra más productos {{$product->brand ? 'de ' . $product->brand->name : '' }} y categorías como {{ $product->categories->pluck('name')->join(', ') }}.">
+<meta name="keywords" content="{{ $product->name }}, {{ $product->brand ? $product->brand->name . ', ': '' }}{{ $product->categories->pluck('name')->join(', ') }}, redes, cable, cables, fibra óptica, iluminación, tienda en línea, distribuidor mayorista, seguridad, cctv, marcas">
 @endsection
 @section('content')
 <!-- START SECTION SHOP -->
@@ -95,7 +95,9 @@
 
                 <ul class="product-meta">
                     <!--<li>SKU: <a href="#">BE45VGRT</a></li>-->
+                    @if($product->brand)
                     <li>Marca: <a href="{{ url('nuestras-marcas/' . $product->brand->slug) }}">{{ $product->brand->name }}</a></li>
+                    @endif
                     <li>Categorías: 
                         @foreach($product->categories as $category)
                             <a href="{{ url('nuestras-categorias/' . $category->slug) }}" rel="tag">{{ $category->name }}</a>@if(!$loop->last), @endif

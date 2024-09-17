@@ -4,15 +4,15 @@
     @php
         $pageTitle = 'Resultados de Búsqueda';
         $pageDescription = 'Explora nuestra amplia selección de productos en categorías y marcas destacadas. Encuentra lo que necesitas en nuestra tienda en línea de redes, iluminación, y más.';
-        $pageKeywords = implode(', ', $products->pluck('name')->toArray()) . 'productos en venta, búsqueda de productos, categorías, marcas, tienda en línea, redes, iluminación, cables, fibra óptica';
+        $pageKeywords = implode(', ', $products->pluck('name')->toArray()) . 'productos en venta, búsqueda de productos, categorías, marcas, tienda en línea, dildos, juguetes para adultos, vibradores, consoladores, succionadores, sexo, juguetes sexuales, plug';
         
         if (request()->is('nuestras-categorias/*')) {
             $pageTitle = $category->name . ' - ' . env('APP_NAME');
-            $pageDescription = 'Descubre los productos en la categoría de ' . $category->name . ' en nuestra tienda mayorista de redes e iluminación.';
+            $pageDescription = 'Descubre los productos en la categoría de ' . $category->name . ' en nuestra tienda de juguetes sexuales.';
             $pageKeywords = implode(', ', $products->pluck('name')->toArray()) . ', ' . 'categorías de productos, tienda en línea';
         } elseif (request()->is('nuestras-marcas/*')) {
             $pageTitle = $brand->name . ' - ' . env('APP_NAME');
-            $pageDescription = 'Encuentra productos de la marca ' . $brand->name . ' en nuestra tienda mayorista. Explora nuestra gama de productos de alta calidad.';
+            $pageDescription = 'Encuentra productos de la marca ' . $brand->name . ' en nuestra tienda. Explora nuestra gama de productos de alta calidad.';
             $pageKeywords = implode(', ', $products->pluck('name')->toArray()) . ', ' . 'marcas de productos, tienda en línea';
         } elseif (request()->has('search')) {
             $searchTerm = request()->input('search');

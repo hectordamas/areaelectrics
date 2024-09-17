@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('hidden')->nullable();
 
             $table->string('youtube_id')->nullable();
+
+            $table->boolean('deleted')->default(false);
              
             $table->bigInteger('brand_id')->unsigned()->nullable();
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
         });
     }
 

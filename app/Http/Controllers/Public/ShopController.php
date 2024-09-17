@@ -9,7 +9,10 @@ use App\Models\Product;
 class ShopController extends Controller
 {
     public function index(){
-        $products = Product::orderBy('id', 'desc')->paginate(10)->withQueryString();
+        $products = Product::where('deleted', false)
+        ->orderBy('id', 'desc')
+        ->paginate(10)
+        ->withQueryString();
         
         return view('shop.index', [
             'products' => $products,
@@ -17,7 +20,8 @@ class ShopController extends Controller
     }
 
     public function search(Request $request){
-        $query = Product::with('brand', 'categories')
+        $query = Product::where('deleted', false)
+        ->with('brand', 'categories')
         ->where(function ($q) use ($request) {
             $q
             ->where('name', 'like', '%' . $request->search . '%')

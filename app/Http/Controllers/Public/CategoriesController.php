@@ -11,7 +11,10 @@ class CategoriesController extends Controller
     public function index($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        $products = $category->products()->paginate(10)->withQueryString();;
+        $products = $category->products()
+        ->where('deleted', false)
+        ->paginate(10)
+        ->withQueryString();
     
         return view('shop.index', [
             'products' => $products,

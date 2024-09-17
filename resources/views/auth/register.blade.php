@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Crear una Cuenta</title>
+<meta name="description" content="Inicia Sesión en Airanza Sex Shop.">
+<meta name="keywords" content="registrate, register, inicia sesion, login, dildos, juguetes sexuales, shop, ecommerce, ingresar, airanza sex shop">
 @endsection
 
 @section('content')

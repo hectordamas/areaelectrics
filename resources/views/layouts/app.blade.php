@@ -181,7 +181,7 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12 d-flex justify-content-center mb-3">
-                                            <img src="{{ asset('assets/images/empty_cart.png') }}" alt="Carrito Vacío" style="max-width: 80px; width: 40%;">
+                                            <img src="{{ asset('assets/images/empty_cart.png') }}" alt="Carrito Vacío" style="max-width: 200px; width: 50%;">
                                         </div>
                                         <div class="col-md-12">
                                             <h6 class="text-center">Tu carrito está vacío. Aún no has agregado ningún producto</h6>

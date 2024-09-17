@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Carrito de Compras</title>
-<meta name="description" content="Tienda en Línea y distribuidor mayorista de Productos de redes, fibra óptica, cable utp, seguridad, cctv, iluminación, entre otros.">
-<meta name="keywords" content="redes, red, cable, cables, cable utp, fibra óptica, iluminación, tienda en línea, distribuidor mayorista, seguridad, cctv, marcas, wireplus, ledplus, tp-link, mercusys, cable utp">
 @endsection
 @section('content')
 <!-- START SECTION BREADCRUMB -->
@@ -136,7 +134,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center mb-5">
-                    <img src="{{ asset('assets/images/empty_cart.png') }}" alt="Carrito Vacío" class="w-100" style="max-width: 150px;">
+                    <img src="{{ asset('assets/images/empty_cart.png') }}" alt="Carrito Vacío" class="w-100" style="max-width: 200px;">
                 </div>
                 <div class="col-md-12">
                     <h5 class="text-center">Tu carrito está vacío. Aún no has agregado ningún producto</h5>

@@ -40,9 +40,7 @@ class ProductsController extends Controller
         $product = new Product();
         $product->price = $request->price;
         $product->name = $request->name;
-        if($request->brand){
-            $product->brand_id = $request->brand;
-        }
+        $product->brand_id = $request->brand;
         $product->description = $request->description;
         $product->hidden = $request->hidden;
         $product->youtube_id = $request->youtube_id;
@@ -110,9 +108,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $product->price = $request->price;
         $product->name = $request->name;
-        if($request->brand){
-            $product->brand_id = $request->brand;
-        }
+        $product->brand_id = $request->brand;
         $product->description = $request->description;
         $product->hidden = $request->hidden;
         $product->slug = Str::slug($request->name);
@@ -181,6 +177,7 @@ class ProductsController extends Controller
 
     public function search(Request $request){
         $products = Product::query()
+        ->where('deleted', false)
         ->name($request->name)
         ->filterByCategories($request->categories)
         ->filterByBrands($request->brands)
@@ -203,10 +200,8 @@ class ProductsController extends Controller
         if(isset($request->productId) && count($request->productId) > 0){
             for($i = 0; $i < count($request->productId); $i++){
                 $product = Product::find($request->productId[$i]);
-                $product->images()->detach();
-                $product->categories()->detach();
-                $product->brand()->delete();
-                $product->delete();
+                $product->deleted = true;
+                $product->save();
             }
         }
 
@@ -286,12 +281,20 @@ class ProductsController extends Controller
         $writer = new Xlsx($spreadsheet);
 
         // Crear el archivo temporalmente en el servidor
-        $fileName = 'fibersolutions_productos.xlsx';
+        $fileName = 'airanza_sex_shop_productos.xlsx';
         $temp_file = tempnam(sys_get_temp_dir(), $fileName);
         $writer->save($temp_file);
 
         // Enviar el archivo al navegador para descarga
         return Response::download($temp_file, $fileName)->deleteFileAfterSend(true);
+    }
+
+    public function delete($id, Request $request){
+        $product = Product::find($id);
+        $product->deleted = true;
+        $product->save();
+
+        return redirect()->back()->with('message', 'Producto eliminado con éxito!');
     }
     
     
