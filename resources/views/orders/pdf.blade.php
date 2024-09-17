@@ -82,7 +82,7 @@
             @foreach($order->products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
-                    <td>{!! $product->pivot->size ?: 'N/A' !!}</td>
+                    <td>{!! $product->pivot->size !!}</td>
                     <td>
                         @if($product->pivot->color)
                             <div href="#" class="ml-auto mx-md-auto" style="background-color: {{ $product->pivot->color }}; width: 20px; height: 20px; border-radius: 100%;"></div>
@@ -99,20 +99,17 @@
 
         <tfoot style="background: #2d3748;">
             <tr>
-                <td colspan="1"></td>
-                <td></td>
+                <td colspan="4"></td>
                 <td align="left" style="color: #fff;">Subtotal</td>
                 <td align="left" style="color: #fff;">$ {{ number_format($order->subtotal, 2, '.', ',') }}</td>
             </tr>
             <tr>
-                <td colspan="1"></td>
-                <td></td>
+                <td colspan="4"></td>
                 <td align="left" style="color: #fff;">IVA</td>
                 <td align="left" style="color: #fff;">$ {{ number_format($order->tax, 2, '.', ',') }}</td>
             </tr>
             <tr>
-                <td colspan="1"></td>
-                <td></td>
+                <td colspan="4"></td>
                 <td align="left" style="color: #fff;">Total</td>
                 <td align="left" style="color: #fff;">$ {{ number_format($order->total, 2, '.', ',') }}</td>
             </tr>

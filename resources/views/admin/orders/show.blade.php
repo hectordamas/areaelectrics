@@ -90,15 +90,15 @@
                     </tbody>
                     <tfoot class="table-dark bg-primary">
                         <tr>
-                            <th colspan="3" class="text-right">Subtotal</th>
+                            <th colspan="5" class="text-right">Subtotal</th>
                             <th>${{ number_format($order->subtotal, 2, '.', ',') }}</th>
                         </tr>
                         <tr>
-                            <th colspan="3" class="text-right">IVA</th>
+                            <th colspan="5" class="text-right">IVA</th>
                             <th>${{ number_format($order->tax, 2, '.', ',') }}</th>
                         </tr>
                         <tr>
-                            <th colspan="3" class="text-right">Total</th>
+                            <th colspan="5" class="text-right">Total</th>
                             <th>${{ number_format($order->total, 2, '.', ',') }}</th>
                         </tr>
                     </tfoot>

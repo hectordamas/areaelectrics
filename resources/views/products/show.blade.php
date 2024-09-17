@@ -146,6 +146,9 @@
                       	<li class="nav-item">
                         	<a class="nav-link" id="Additional-info-tab" data-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Información Adicional</a>
                       	</li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Video-tap" data-toggle="tab" href="#Video" role="tab" aria-controls="Video" aria-selected="false">Video Promocional</a>
+                        </li>
                     </ul>
                 	<div class="tab-content shop_info_tab">
                       	<div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
@@ -165,6 +168,13 @@
                                 @endforelse
                         	</table>
                       	</div>
+                        <div class="tab-pane fade" id="Video" role="tabpanel" aria-labelledby="Video-tab">
+                            @if($product->youtube_id)
+                                <iframe width="100%" style="max-width: 500px;" height="315" src="https://www.youtube.com/embed/{{ $product->youtube_id }}?si=dVohBJfFRLMrPI0D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            @else
+                                <p>No hay Video Promocional Disponible</p>
+                            @endif
+                        </div>
                 	</div>
                 </div>
             </div>

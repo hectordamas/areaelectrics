@@ -36,7 +36,7 @@ class OrdersController extends Controller
             'order' => $order
         ]);
 
-        return $pdf->download('fibersolutions_orden_'. $order->order_number .'.pdf');
+        return $pdf->download('orden_'. $order->order_number .'.pdf');
     }
 
     public function loginToOrder(Request $request)

@@ -226,6 +226,11 @@
                                                 </div>
                                             
                                             </div>
+
+                                            <div class="col-md-6 form-group">
+                                                <label class="font-weight-bold">YouTube ID</label>
+                                                <input type="text" class="form-control" id="youtube_id" name="youtube_id" >
+                                            </div>
                                         </div>
                                     
                                         <div class="row">

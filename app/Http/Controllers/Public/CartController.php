@@ -114,8 +114,8 @@ class CartController extends Controller
         foreach($cartItems as $item){
             $order->products()->attach($item->id, [
                 'quantity' => $item->qty,
-                'color' => isset($item->options['color']) ? null : $item->options['color'],
-                'size' => isset($item->options['size']) ? null : $item->options['size'] 
+                'color' => isset($item->options['color']) ? $item->options['color'] : null,
+                'size' => isset($item->options['size']) ? $item->options['size'] : null
             ]);
         }
 

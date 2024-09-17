@@ -148,6 +148,7 @@
                                             <label for="name" class="font-weight-bold">Nombre del Producto</label>
                                             <input type="text" class="form-control" name="name" required />
                                         </div>
+
                                         <div class="col-md-6 form-group">
                                             <label for="price" class="font-weight-bold">Precio</label>
                                             <input type="number" step="any" class="form-control" name="price" id="price" required />
@@ -176,6 +177,11 @@
                                                 <input type="checkbox" value="Sí" id="hidden"  name="hidden" />
                                                 No Mostrar
                                             </label>
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <label class="font-weight-bold">YouTube ID</label>
+                                            <input type="text" class="form-control" id="youtube_id" name="youtube_id" >
                                         </div>
                                     
                                     </div>

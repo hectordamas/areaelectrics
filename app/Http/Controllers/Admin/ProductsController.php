@@ -45,6 +45,7 @@ class ProductsController extends Controller
         }
         $product->description = $request->description;
         $product->hidden = $request->hidden;
+        $product->youtube_id = $request->youtube_id;
         $product->slug = Str::slug($request->name);
         $product->save();
 
@@ -115,6 +116,7 @@ class ProductsController extends Controller
         $product->description = $request->description;
         $product->hidden = $request->hidden;
         $product->slug = Str::slug($request->name);
+        $product->youtube_id = $request->youtube_id;
         $product->save();
 
         // Actualizar el slug con el ID

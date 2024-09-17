@@ -109,17 +109,17 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="4"></td>
                     <td><strong>Subtotal</strong></td>
                     <td>${!! number_format($order->subtotal, 2, '.', ',') !!}</td>
                 </tr>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="4"></td>
                     <td><strong>IVA</strong></td>
                     <td>${!! number_format($order->tax, 2, '.', ',') !!}</td>
                 </tr>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="4"></td>
                     <td><strong>Total</strong></td>
                     <td>${!! number_format($order->total, 2, '.', ',') !!}</td>
                 </tr>
