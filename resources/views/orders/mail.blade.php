@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://i.postimg.cc/G2fMfBYG/logo-dark.png" alt="{{ env('APP_NAME') }}">
+            <img src="https://i.postimg.cc/HsCrspsG/airanzasexshoplogo-c-blanco.png" alt="{{ env('APP_NAME') }}">
             <h1>Gracias por tu pedido</h1>
         </div>
         <div class="order-details">

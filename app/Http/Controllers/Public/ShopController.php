@@ -10,6 +10,7 @@ class ShopController extends Controller
 {
     public function index(){
         $products = Product::where('deleted', false)
+        ->whereNull('hidden')
         ->orderBy('id', 'desc')
         ->paginate(10)
         ->withQueryString();
@@ -21,6 +22,7 @@ class ShopController extends Controller
 
     public function search(Request $request){
         $query = Product::where('deleted', false)
+        ->whereNull('hidden')
         ->with('brand', 'categories')
         ->where(function ($q) use ($request) {
             $q

@@ -14,7 +14,7 @@
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active background_bg" data-img-src="assets/images/banner4.jpg">
+            <div class="carousel-item active background_bg" data-img-src="{{ asset('assets/images/banner4.jpg') }}">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
                         <div class="row">
@@ -23,14 +23,14 @@
                                     <h6 class="mb-2 mb-sm-3 staggered-animation text-uppercase animated fadeInDown" data-animation="fadeInDown" data-animation-delay="0.2s" style="animation-delay: 0.2s; opacity: 1;">Descubre Nuevas Sensaciones</h6>
                                     <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="0.4s">Rompe el Tabú</h2>
                                     <p class="staggered-animation text-dark animated fadeInUp" style="font-weight: 500; animation-delay: 1s; opacity: 1;" data-animation="fadeInUp" data-animation-delay="0.4s">Encuentra los mejores juguetes sexuales en nuestra Tienda en Línea, y dale rienda suelta a tus deseos.</p>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Explorar Productos</a>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{ url('tienda-en-linea') }}" data-animation="slideInLeft" data-animation-delay="1.5s">Explorar Productos</a>
                                 </div>
                             </div>
                         </div>
                     </div><!-- END CONTAINER-->
                 </div>
             </div>
-            <div class="carousel-item background_bg" data-img-src="assets/images/banner5.jpg">
+            <div class="carousel-item background_bg" data-img-src="{{ asset('assets/images/banner5.jpg') }}">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
                         <div class="row">
@@ -41,8 +41,8 @@
                                     <h2 class="staggered-animation" data-animation="slideInRight" data-animation-delay="0.4s">
                                         Eleva tu Intimidad
                                     </h2>
-                                    <p class="staggered-animation text-dark animated fadeInUp" style="font-weight: 500; animation-delay: 1s; opacity: 1;" data-animation="fadeInUp" data-animation-delay="0.4s">Con Airan Sex Shop el placer está al alcance de tu mano. Rompe el Tabú y experimenta con tu cuerpo</p>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInRight" data-animation-delay="1.5s">
+                                    <p class="staggered-animation text-dark animated fadeInUp" style="font-weight: 500; animation-delay: 1s; opacity: 1;" data-animation="fadeInUp" data-animation-delay="0.4s">Con Airanza Sex Shop el placer está al alcance de tu mano. Rompe el Tabú y experimenta con tu cuerpo</p>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{ url('tienda-en-linea') }}" data-animation="slideInRight" data-animation-delay="1.5s">
                                         Conoce Más
                                     </a>
                                 </div>
@@ -60,7 +60,7 @@
                                     <h6 class="mb-2 mb-sm-3 staggered-animation text-uppercase animated fadeInDown" data-animation="fadeInDown" data-animation-delay="0.2s" style="animation-delay: 0.2s; opacity: 1;">Seducción y Estilo</h6>
                                     <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="0.4s">Lencería para Cada Momento</h2>
                                     <p class="staggered-animation text-dark animated fadeInUp" style="font-weight: 500; animation-delay: 1s; opacity: 1;" data-animation="fadeInUp" data-animation-delay="0.4s">Conoce toda la colección de lencería que tenemos para ti</p>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Ver Colección</a>
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{ url('nuestras-categorias/lenceria-1') }}" data-animation="slideInLeft" data-animation-delay="1.5s">Ver Colección</a>
                                 </div>
                             </div>
                         </div>
@@ -116,21 +116,21 @@
     	<div class="row">
         	<div class="col-md-6">
             	<div class="single_banner">
-                	<img src="assets/images/shop_banner_img1.jpg" alt="shop_banner_img1">
+                	<img src="{{ asset('assets/images/shop_banner_img1.jpg') }}" alt="Banner de Vibradores">
                     <div class="single_banner_info">
-                        <h5 class="single_bn_title1">Super Sale</h5>
-                        <h3 class="single_bn_title">New Collection</h3>
-                        <a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
+                        <h6 class="single_bn_title1">Categoría Destacada</h6>
+                        <h3 class="single_bn_title">Vibradores</h3>
+                        <a href="{{ url('nuestras-categorias/vibradores-3') }}" class="btn btn-fill-out btn-sm btn-radius">Ver Más</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
             	<div class="single_banner">
-                	<img src="assets/images/shop_banner_img2.jpg" alt="shop_banner_img2">
+                	<img src="{{ asset('assets/images/shop_banner_img2.jpg') }}" alt="Banner de consoladores">
                     <div class="fb_info2">
-                        <h3 class="single_bn_title">New Season</h3>
-                        <h4 class="single_bn_title1">Sale 40% Off</h4>
-                        <a href="shop-left-sidebar.html" class="single_bn_link">Shop Now</a>
+                        <h6 class="single_bn_title1">Categoría Destacada</h6>
+                        <h3 class="single_bn_title">Consoladores</h3>
+                        <a href="{{ url('nuestras-categorias/consoladores-7') }}" class="btn btn-fill-out btn-sm btn-radius">Ver Más</a>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
 <!-- END SECTION BANNER --> 
 
 <!-- START SECTION SHOP -->
-<div class="section small_pb small_pt">
+<div class="section pb_50 small_pt">
 	<div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">

@@ -12,6 +12,7 @@ class CategoriesController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         $products = $category->products()
+        ->whereNull('hidden')
         ->where('deleted', false)
         ->paginate(10)
         ->withQueryString();

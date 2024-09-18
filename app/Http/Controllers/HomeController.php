@@ -93,7 +93,7 @@ class HomeController extends Controller
             ->get()
             ->take(3);
 
-            $messages = Message::where('id', 'desc')
+            $messages = Message::orderBy('id', 'desc')
             ->get()
             ->take(3);
 

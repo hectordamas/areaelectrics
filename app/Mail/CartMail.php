@@ -29,7 +29,7 @@ class CartMail extends Mailable
     {
         return new Envelope(
             from: new Address(env('MAIL_FROM_ADDRESS'), env('APP_NAME')),
-            subject: 'Pedido #'. $this->order->order_number .' en Fiber Solutions',
+            subject: 'Pedido #'. $this->order->order_number .' en ' . env('APP_NAME'),
         );
     }
 

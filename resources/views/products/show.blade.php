@@ -98,11 +98,14 @@
                     @if($product->brand)
                     <li>Marca: <a href="{{ url('nuestras-marcas/' . $product->brand->slug) }}">{{ $product->brand->name }}</a></li>
                     @endif
+
+                    @if($product->categories->count() > 0)
                     <li>Categorías: 
                         @foreach($product->categories as $category)
                             <a href="{{ url('nuestras-categorias/' . $category->slug) }}" rel="tag">{{ $category->name }}</a>@if(!$loop->last), @endif
                         @endforeach
-                    </li>                    
+                    </li>
+                    @endif                    
                 </ul>
 
                 <div class="product_share">
@@ -111,16 +114,6 @@
                         <li>
                             <a target="_blank" href="https://wa.me/?text={{ urlencode(request()->url()) }}">
                                 <i style="font-size: 20px;" class="ion-social-whatsapp"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}">
-                                <i style="font-size: 20px;" class="ion-social-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="#" onclick="alert('Copia y pega este enlace en tu historia de Instagram: {{ request()->url() }}');">
-                                <i style="font-size: 20px;" class="ion-social-instagram-outline"></i>
                             </a>
                         </li>
                         <li>
@@ -154,7 +147,11 @@
                     </ul>
                 	<div class="tab-content shop_info_tab">
                       	<div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
-                            {!! $product->description !!}
+                            @if($product->description)
+                                {!! $product->description !!}
+                            @else
+                                Este Producto no tiene una descripción disponible
+                            @endif
                         </div>
                       	<div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
                             <table class="table table-bordered">

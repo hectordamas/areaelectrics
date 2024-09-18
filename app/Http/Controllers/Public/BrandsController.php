@@ -12,6 +12,7 @@ class BrandsController extends Controller
     {
         $brand = Brand::where('slug', $slug)->first();
         $products = $brand->products()
+        ->whereNull('hidden')
         ->where('deleted', false)
         ->paginate(10)
         ->withQueryString();;

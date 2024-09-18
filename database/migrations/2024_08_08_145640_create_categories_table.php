@@ -23,21 +23,13 @@ return new class extends Migration
         });
 
         $categories = [
-            "Routers y Switches", //1
-            "Fibra Óptica", //2
-            "Streaming", //3
-            'Cables', //4
-            'Accesorio de Redes', //5
-            "Modem", //6,
-            "Entensores - Repetidores", //7
-            'Ferretería', //8
-            "Iluminación", //9
-            "Baterías y Pilas", //10
-            "Rack y Bandejas", //11
-            "Tapas y Enchufes", //12
-            "UPS", //13
-            "Cámaras WiFi", //14 
-            "CCTV" //15
+            "Lencería", //1
+            "Plug", //2
+            "Vibradores", //3
+            'Succionadores', //4
+            'Fetichismo', //5
+            "Amarres - Bondage", //6,
+            "Consoladores" //7
         ];
 
         for($i = 0; $i < count($categories); $i++){

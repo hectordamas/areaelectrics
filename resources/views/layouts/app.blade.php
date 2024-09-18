@@ -64,14 +64,14 @@
                 <div class="col-md-6 d-none d-md-block">
                 	<div class="d-flex align-items-center justify-content-center justify-content-md-start">
                         <ul class="contact_detail text-center text-lg-left">
-                            <li><i class="ti-email"></i><span>info@airansexshop.com</span></li>
+                            <li><i class="ti-email"></i><span>info@airanzasexshop.com</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
                 	<div class="text-center text-md-right">
                        	<ul class="header_list">
-                            <li><a href="{{ url('wishlist') }}"><i class="ti-heart"></i><span>Lista de Favoritos</span></a></li>
+                            <li><a href="#"><i class="ti-heart"></i><span>Lista de Favoritos</span></a></li>
                             @auth
                             <li class="d-none d-md-inline-block">
                                 <form action="{{ route('logout') }}" id="logout-form" method="post">
@@ -102,33 +102,29 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link nav_item active" href="{{ url('/') }}">Inicio</a></li> 
-                        <li><a class="nav-link nav_item" href="{{ url('/tienda-en-linea') }}">Tienda</a></li> 
-                        <li class="dropdown dropdown-mega-menu">
+                        <li><a class="nav-link nav_item {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li> 
+                        <li><a class="nav-link nav_item {{ request()->is('tienda-en-linea') ? 'active' : '' }}" href="{{ url('/tienda-en-linea') }}">Tienda</a></li> 
+                        <li class="dropdown">
                             <a class="dropdown-toggle nav-link {{ request()->is('nuestras-categorias/*') ? 'active' : '' }}" href="#" data-toggle="dropdown">Nuestros Productos</a>
-                            <div class="dropdown-menu" style="margin-top: -20px;">
-                                <ul class="mega-menu d-lg-flex">
-                                    @for($i = 0; $i < count($globalSections); $i++)
-                                    <li class="mega-menu-col col-lg-3">
-                                        <ul> 
-                                            @foreach ($globalCategories->skip($globalSections[$i])->take(5) as $category)
-                                            <li>
-                                                <a class="nav-link nav_item" href="{{ url('nuestras-categorias/' . $category->slug) }}">{{$category->name}}</a>
-                                            </li>    
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    @endfor
+                            <div class="dropdown-menu" style="margin-top: -15px;">
+                                <ul> 
+                                    <li class="dropdown-header">Nuestros Productos</li>
+                                    @foreach ($globalCategories as $category)
+                                    <li>
+                                        <a class="dropdown-item nav-link nav_item" href="{{ url('nuestras-categorias/' . $category->slug) }}">{{$category->name}}</a>
+                                    </li>    
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>                        
-                        <li><a class="nav-link nav_item" href="{{ url('nosotros') }}">Nosotros</a></li> 
-                        <li><a class="nav-link nav_item" href="{{ url('contacto') }}">Contacto</a></li> 
+                        <li><a class="nav-link nav_item {{ request()->is('nosotros') ? 'active' : '' }}" href="{{ url('nosotros') }}">Nosotros</a></li> 
+                        <li><a class="nav-link nav_item {{ request()->is('contacto') ? 'active' : '' }}" href="{{ url('contacto') }}">Contacto</a></li> 
                         @auth
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu">
                                 <ul> 
+                                    <li class="dropdown-header">Mi Cuenta</li>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ url('mis-ordenes') }}">Mis Órdenes</a></li> 
                                     @if(Auth::user()->role == 'Administrador')
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ url('home') }}">Administrador</a></li> 
@@ -149,6 +145,7 @@
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ route('login') }}">Mi Cuenta</a>
                             <div class="dropdown-menu">
                                 <ul> 
+                                    <li class="dropdown-header">Mi Cuenta</li>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ route('login') }}">Inicia Sesión</a></li>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ route('register') }}">Regístrate</a></li>
                                 </ul>
@@ -235,9 +232,16 @@
                 	<div class="widget">
                         <h6 class="widget_title">Enlaces</h6>
                         <ul class="widget_links">
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Nosotros</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="{{ url('/') }}">Inicio</a></li>
+                            <li><a href="{{ url('tienda-en-linea') }}">Tienda</a></li>
+                            <li><a href="{{ url('nosotros') }}">Nosotros</a></li>
+                            <li><a href="{{ url('contacto') }}">Contacto</a></li>
+                            @auth
+                            <li><a href="{{ url('mis-ordenes') }}">Mis Órdenes</a></li>
+                            @else
+                            <li><a href="{{ url('login') }}">Inicia Sesión</a></li>
+                            <li><a href="{{ url('register') }}">Regístrate</a></li>
+                            @endauth
                         </ul>
                     </div>
                 </div>
@@ -245,11 +249,9 @@
                 	<div class="widget">
                         <h6 class="widget_title">Categorias</h6>
                         <ul class="widget_links">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Woman</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Best Saller</a></li>
-                            <li><a href="#">New Arrivals</a></li>
+                            @foreach($globalCategories as $category)
+                            <li><a href="{{ url('nuestras-categorias/' . $category->slug) }}">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
