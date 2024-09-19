@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Juguetes Sexuales y Lencería en Venezuela | Rompe el Tabú</title>
-<meta name="description" content="Encuentra los mejores juguetes sexuales, lencería y productos para adultos en Venezuela. Airan Sex Shop te ofrece discreción, calidad y envíos a nivel nacional. Rompe el tabú y vive nuevas experiencias.">
+<meta name="description" content="Encuentra los mejores juguetes sexuales, lencería y productos para adultos en Venezuela. {{ env('APP_NAME') }} te ofrece discreción, calidad y envíos a nivel nacional. Rompe el tabú y vive nuevas experiencias.">
 <meta name="keywords" content="juguetes sexuales, lencería, sex shop, vibradores, placer, juguetes para adultos, tienda en línea, productos eróticos, Venezuela, discreción, envío nacional">
-<meta property="og:title" content="Airan Sex Shop - Juguetes Sexuales y Lencería en Venezuela">
-<meta property="og:description" content="Descubre juguetes sexuales, lencería y productos para adultos en nuestra tienda en línea. Discreción garantizada y envíos a nivel nacional. Rompe el tabú con Airan Sex Shop.">
+<meta property="og:title" content="{{ env('APP_NAME') }} - Juguetes Sexuales y Lencería en Venezuela">
+<meta property="og:description" content="Descubre juguetes sexuales, lencería y productos para adultos en nuestra tienda en línea. Discreción garantizada y envíos a nivel nacional. Rompe el tabú con {{ env('APP_NAME') }}.">
 <meta property="og:image" content="{{ asset('assets/images/logo_dark.png') }}">
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website">
