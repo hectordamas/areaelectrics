@@ -17,6 +17,6 @@ return [
     'sent' => 'Te hemos enviado a tu correo el enlace de recuperación. Asegúrate de revisar la carpeta Spam.',
     'throttled' => 'Espera unos minutos para intentar nuevamente.',
     'token' => 'Este token de recuperación es inválido.',
-    'user' => "Este usuario no se encuentra registrado en nuestra plataforma.",
+    'user' => "Correo o Contraseña inválida.",
 
 ];
