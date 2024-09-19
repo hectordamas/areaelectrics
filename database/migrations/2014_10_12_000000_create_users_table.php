@@ -32,6 +32,13 @@ return new class extends Migration
         $user->password = bcrypt('alinware98_');        
         $user->role = 'Administrador';
         $user->save();
+
+        $user = new User();
+        $user->name = "Airan Zambrano";
+        $user->email = 'airanzasexshop.ve@gmail.com';
+        $user->password = bcrypt('Airanzasexshop2024*');        
+        $user->role = 'Administrador';
+        $user->save();
     }
 
     /**

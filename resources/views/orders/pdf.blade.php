@@ -51,7 +51,7 @@
             </td>
             <td align="left" width="33%">
                 <strong>E-Mail:</strong> info@airanzasexshop.com.ve <br>
-                <strong>Whatsapp: </strong> +58414-1107270 <br>
+                <strong>Whatsapp: </strong> +58 412 020 6548 <br>
             </td>
             <td align="left" width="30%">
                 <strong>Numero de Orden:</strong> #{{ $order->order_number }} <br>

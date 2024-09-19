@@ -1,4 +1,4 @@
-<div class="product border-0 rounded-0 product_box">
+<div class="product border-0 rounded-0 product_box text-center">
     <div class="product_img" style="cursor: pointer;" onclick="window.open('{{ url('nuestros-productos/' . $product->slug) }}', '_self')">
         <a href="{{ url('nuestros-productos/' . $product->slug) }}">
             @if($product->images()->first())
