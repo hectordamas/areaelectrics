@@ -148,36 +148,30 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
+                                    <th>Producto</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(Cart::content() as $item)
                                 <tr>
-                                    <td>Blue Dress For Woman <span class="product-qty">x 2</span></td>
-                                    <td>$90.00</td>
+                                    <td> {{$item->name}} <span class="product-qty">x {{$item->qty}} </span></td>
+                                    <td>${{ $item->qty * $item->price }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Lether Gray Tuxedo <span class="product-qty">x 1</span></td>
-                                    <td>$55.00</td>
-                                </tr>
-                                <tr>
-                                    <td>woman full sliv dress <span class="product-qty">x 3</span></td>
-                                    <td>$204.00</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>SubTotal</th>
-                                    <td class="product-subtotal">$349.00</td>
+                                    <td class="product-subtotal">${{ Cart::subtotal() }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Shipping</th>
-                                    <td>Free Shipping</td>
+                                    <th>IVA</th>
+                                    <td class="product-tax">${{ Cart::tax() }}</td>
                                 </tr>
                                 <tr>
                                     <th>Total</th>
-                                    <td class="product-subtotal">$349.00</td>
+                                    <td class="product-subtotal">${{ Cart::total() }}</td>
                                 </tr>
                             </tfoot>
                         </table>
