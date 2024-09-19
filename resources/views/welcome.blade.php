@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Juguetes Sexuales y Lencería en Venezuela | Rompe el Tabú</title>
 <meta name="description" content="Encuentra los mejores juguetes sexuales, lencería y productos para adultos en Venezuela. {{ env('APP_NAME') }} te ofrece discreción, calidad y envíos a nivel nacional. Rompe el tabú y vive nuevas experiencias.">
@@ -9,6 +10,7 @@
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website">
 @endsection
+
 @section('content')
 <!-- START SECTION BANNER -->
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
