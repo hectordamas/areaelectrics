@@ -150,9 +150,20 @@
                                         </div>
 
                                         <div class="col-md-6 form-group">
-                                            <label for="price" class="font-weight-bold">Precio</label>
+                                            <label for="price" class="font-weight-bold">Precio Mayor</label>
                                             <input type="number" step="any" class="form-control" name="price" id="price" required />
                                             <strong class="text-success" id="priceFormat"></strong>
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <label for="priceDetal" class="font-weight-bold">Precio Detal</label>
+                                            <input type="number" step="any" class="form-control" name="priceDetal" id="priceDetal" required />
+                                            <strong class="text-success" id="priceDetalFormat"></strong>
+                                        </div>
+
+                                        <div class="col-md-6 form-group">
+                                            <label class="font-weight-bold">YouTube ID</label>
+                                            <input type="text" class="form-control" id="youtube_id" name="youtube_id" >
                                         </div>
                                     
                                         <div class="form-group col-md-6">
@@ -177,12 +188,14 @@
                                                 <input type="checkbox" value="Sí" id="hidden"  name="hidden" />
                                                 No Mostrar
                                             </label>
+
+                                            <label for="ofertasDeLaSemana" class="font-weight-bold mt-3 ml-3">
+                                                <input type="checkbox" value="Sí" id="ofertasDeLaSemana"  name="ofertasDeLaSemana" />
+                                                Agregar a ofertas de las Semana
+                                            </label>
                                         </div>
 
-                                        <div class="col-md-6 form-group">
-                                            <label class="font-weight-bold">YouTube ID</label>
-                                            <input type="text" class="form-control" id="youtube_id" name="youtube_id" >
-                                        </div>
+
                                     
                                     </div>
 

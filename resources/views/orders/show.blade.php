@@ -46,18 +46,22 @@
                                     <thead>
                                         <tr>
                                             <th class="product-name">Producto</th>
-                                            <th class="product-price">Precio</th>
+                                            <th class="product-price">Precio Mayor</th>
+                                            <th class="product-priceDetal">Precio Detal</th>
                                             <th class="product-quantity">Cantidad</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-subtotal">Total Mayor</th>
+                                            <th class="product-subtotalDetal">Total Detal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($order->products as $product)
                                         <tr>
                                             <td class="product-name" data-title="Producto">{{ $product->name }}</td>
-                                            <td class="product-price" data-title="Precio">${{ $product->price }}</td>
+                                            <td class="product-price" data-title="Precio Mayor">${{ number_format($product->price, 2, '.', ',') }}</td>
+                                            <td class="product-priceDetal" data-title="Precio Detal">${{ number_format($product->priceDetal, 2, '.', ',') }}</td>
                                             <td class="product-quantity" data-title="Cantidad">{{ $product->pivot->quantity }}</td>
-                                            <td class="product-subtotal" data-title="Total">${{$product->pivot->quantity * $product->price }}</td>
+                                            <td class="product-subtotal" data-title="Total Mayor">${{number_format($product->pivot->quantity * $product->price, 2, '.', ',') }}</td>
+                                            <td class="product-subtotal" data-title="Total Detal">${{number_format($product->pivot->quantity * $product->priceDetal, 2, '.', ',') }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -74,16 +78,24 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
+                                                    <td></td>
+                                                    <td>Mayor</td>
+                                                    <td>Detal</td>
+                                                </tr>
+                                                <tr>
                                                     <td class="cart_total_label">Subtotal</td>
                                                     <td class="cart_subtotal_amount">${{ number_format($order->subtotal, 2, '.', ',') }}</td>
+                                                    <td class="cart_subtotalDetal_amount">${{ number_format($order->subtotalDetal, 2, '.', ',') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">IVA</td>
                                                     <td class="cart_tax_amount">${{ number_format($order->tax, 2, '.', ',') }}</td>
+                                                    <td class="cart_taxDetal_amount">${{ number_format($order->taxDetal, 2, '.', ',') }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
                                                     <td class="cart_total_amount"><strong>${{ number_format($order->total, 2, '.', ',') }}</strong></td>
+                                                    <td class="cart_totalDetal_amount"><strong>${{ number_format($order->totalDetal, 2, '.', ',') }}</strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>

@@ -163,6 +163,16 @@ $(document).ready(function(){
         $('#priceFormat').html(priceFormat);
     })
 
+    $('#priceDetal').on('input', function(){
+        let val = parseFloat($('#priceDetal').val()) || 0
+        let priceFormat = new Intl.NumberFormat('en-US', { 
+            style: 'currency', 
+            currency: 'USD', 
+            currencyDisplay: 'narrowSymbol'
+        }).format(val)
+        $('#priceDetalFormat').html(priceFormat);
+    })
+
     //Select2
     if($('.select2')){
         $('.select2').select2();

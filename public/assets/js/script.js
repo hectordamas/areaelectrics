@@ -6,6 +6,7 @@ $(document).ready(function(){
       let id = $('#id').val();
       let name = $('#name').val();
       let price = $('#price').val();
+      let priceDetal = $('#priceDetal').val();
       let image = $('#image').val();
       let quantity = $('#quantity').val();
 
@@ -15,7 +16,7 @@ $(document).ready(function(){
         },
         url:'/cart/addToCart',
         type:'POST',
-        data: { id, name, price, image, quantity},
+        data: { id, name, price, image, quantity, priceDetal},
         success:function(data){
           Swal.fire({
             icon: 'success',
@@ -40,11 +41,26 @@ $(document).ready(function(){
           $('.cart_list').html('');
           let items = Object.values(data.items)              
           items.map((item) => {
-            $('.cart_list').append(`<li>\
-                  <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>\
-                  <span class="cart_quantity">${item.qty} x <span class="cart_amount">${'$' + item.price}</span>\
-              </li>`);
+            let priceDetal = item.options['price_detal'] ?? 'N/A';
+            let priceMayor = item.price;
+            
+            $('.cart_list').append(`<li>
+              <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>
+              <span class="cart_quantity">${item.qty} x 
+                <span class="cart_amount">
+                  <small>(Detal: $${priceDetal})</small><br>
+                  <small>(Mayor: $${priceMayor})</small>
+                </span>
+              </span>
+            </li>`);
           })
+
+          // Actualizar los totales de detal
+          $('#cart_subtotal_mayor').html('$' + data.cart_subtotal);
+          $('#cart_subtotal_detal').html('$' + data.subtotalDetal);
+          $('#cart_total').html('$' + data.cart_total);
+          $('#cart_tax').html('$' + data.cart_tax);
+          $('#cart_tax_detal').html('$' + data.taxDetal);
         },
       });
     })
@@ -92,10 +108,25 @@ $(document).ready(function(){
 
             let items = Object.values(data.items)              
             items.map((item) => {
-              $('.cart_list').append(`<li>\
-                    <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>\
-                    <span class="cart_quantity">${item.qty} x <span class="cart_amount">${'$' + item.price}</span>\
-                </li>`);
+              let priceDetal = item.options['price_detal'] ?? 'N/A';
+              let priceMayor = item.price;
+              
+              $('.cart_list').append(`<li>
+                <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>
+                <span class="cart_quantity">${item.qty} x 
+                  <span class="cart_amount">
+                    <small>(Detal: $${priceDetal})</small><br>
+                    <small>(Mayor: $${priceMayor})</small>
+                  </span>
+                </span>
+              </li>`);
+
+              // Actualizar los totales de detal
+              $('#cart_subtotal_mayor').html('$' + data.cart_subtotal);
+              $('#cart_subtotal_detal').html('$' + data.subtotalDetal);
+              $('#cart_total').html('$' + data.cart_total);
+              $('#cart_tax').html('$' + data.cart_tax);
+              $('#cart_tax_detal').html('$' + data.taxDetal);
             })
           },
         });
@@ -133,18 +164,35 @@ $(document).ready(function(){
   
             $('.cart_list').html('')
             
-            let items = Object.values(data.items)              
+            let items = Object.values(data.items)    
+
             items.map((item) => {
-            $('.cart_list').append(`<li>\
-                    <a href="#"><img src="${item.options['image']}" alt="${item.title}">${item.name}</a>\
-                    <span class="cart_quantity">${item.qty} x <span class="cart_amount">${'$' + item.price}</span>\
-                </li>`);
+              let priceDetal = item.options['price_detal'] ?? 'N/A';
+              let priceMayor = item.price;
+              
+              $('.cart_list').append(`<li>
+                <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>
+                <span class="cart_quantity">${item.qty} x 
+                  <span class="cart_amount">
+                    <small>(Detal: $${priceDetal})</small><br>
+                    <small>(Mayor: $${priceMayor})</small>
+                  </span>
+                </span>
+              </li>`);
             })
-  
+
             $('.product-quantity-' + rowId).html(updatedItemQuantity)
             $('#qty-input' + rowId).val(updatedItemQuantity)
             $('.product-subtotal-' + rowId).html('$' + updatedItemPrice.toFixed(2))
-            
+            $('.product-subtotalDetal-' + rowId).html('$' + (data.updatedItemQuantity * data.updatedItemPriceDetal).toFixed(2))
+
+
+                          // Actualizar los totales de detal
+                          $('#cart_subtotal_mayor').html('$' + data.cart_subtotal);
+                          $('#cart_subtotal_detal').html('$' + data.subtotalDetal);
+                          $('#cart_total').html('$' + data.cart_total);
+                          $('#cart_tax').html('$' + data.cart_tax);
+                          $('#cart_tax_detal').html('$' + data.taxDetal);
             Swal.fire({
               icon: 'success',
               text: 'Producto modificado con éxito!'
@@ -183,11 +231,26 @@ $(document).ready(function(){
               let items = Object.values(data.items)              
   
               items.map((item) => {
-              $('.cart_list').append(`<li>\
-                      <a href="#"><img src="${item.options['image']}" alt="${item.title}">${item.title}</a>\
-                      <span class="cart_quantity">${item.quantity} x <span class="cart_amount">${'$' + item.price}</span>\
-                  </li>`);
+                let priceDetal = item.options['price_detal'] ?? 'N/A';
+                let priceMayor = item.price;
+                
+                $('.cart_list').append(`<li>
+                  <a href="#"><img src="${item.options['image']}" alt="${item.name}">${item.name}</a>
+                  <span class="cart_quantity">${item.qty} x 
+                    <span class="cart_amount">
+                      <small>(Detal: $${priceDetal})</small><br>
+                      <small>(Mayor: $${priceMayor})</small>
+                    </span>
+                  </span>
+                </li>`);
               })
+
+                            // Actualizar los totales de detal
+                            $('#cart_subtotal_mayor').html('$' + data.cart_subtotal);
+                            $('#cart_subtotal_detal').html('$' + data.subtotalDetal);
+                            $('#cart_total').html('$' + data.cart_total);
+                            $('#cart_tax').html('$' + data.cart_tax);
+                            $('#cart_tax_detal').html('$' + data.taxDetal);
     
               $('#tr' + rowId).remove()
             }

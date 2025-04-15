@@ -33,11 +33,11 @@
                         	<tr>
                             	<th class="product-thumbnail">&nbsp;</th>
                                 <th class="product-name">Producto</th>
-                                <th class="product-size">Talla</th>
-                                <th class="product-color">Color</th>
-                                <th class="product-price">Precio</th>
+                                <th class="product-price">Precio Mayor</th>
+                                <th class="product-priceDetal">Precio Detal</th>
                                 <th class="product-quantity">Cantidad</th>
-                                <th class="product-subtotal">Total</th>
+                                <th class="product-subtotal">Total Mayor</th>
+                                <th class="product-subtotalDetal">Total Detal</th>
                                 <th class="product-edit">Editar</th>
                                 <th class="product-delete">Eliminar</th>
                             </tr>
@@ -51,19 +51,13 @@
                                     <a href="#"><img src="{{ isset($item->options['image']) ? $item->options['image'] : null }}" alt="product1"></a>
                                 </td>
                                 <td class="product-name" data-title="Producto"><a href="#">{{ $item->name }}</a></td>
-                                <td class="product-size" data-title="Talla"><a href="#">{{ isset($item->options['size']) ? $item->options['size'] : 'N/A' }}</a></td>
-                                <td class="product-color" data-title="Color">
-                                    @if(isset($item->options['color']))
-                                        <div href="#" class="ml-auto mx-md-auto" style="background-color: {{ $item->options['color'] }}; width: 20px; height: 20px; border-radius: 100%;"></div>
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-                                <td class="product-price" data-title="Precio">${{ $item->price }}</td>
+                                <td class="product-price" data-title="Precio Mayor">${{ $item->price }}</td>
+                                <td class="product-priceDetal" data-title="Precio Detal">${{ $item->priceDetal ?? 0}}</td>
                                 <td class="product-quantity product-quantity-{{$item->rowId}}" data-title="Cantidad">
                                     {{ $item->qty }}
                                 </td>
-                              	<td class="product-subtotal-{{$item->rowId}}" data-title="Total">${{ $item->qty * $item->price }}</td>
+                              	<td class="product-subtotal-{{$item->rowId}}" data-title="Total Mayor">${{ $item->qty * $item->price }}</td>
+                                <td class="product-subtotalDetal-{{$item->rowId}}" data-title="Total Detal">${{ $item->qty * $item->priceDetal }}</td>
                                 <td class="product-edit" data-title="Editar">
                                     <a href="javascript:void(0);" class="btn btn-fill-out btn-sm updateCartItem" data-rowid="{{$item->rowId}}">
                                         <i class="fa fa-edit"></i>
@@ -78,7 +72,7 @@
                             @endforeach
                             <tfoot>
                                 <tr>
-                                    <td colspan="9" class="px-0">
+                                    <td colspan="11" class="px-0">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-lg-4 col-md-6 mb-3 mb-md-0">
                                             </div>
@@ -105,22 +99,30 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-            	<div class="border p-3 p-md-4">
+                <div class="border p-3 p-md-4">
                     <h6 class="mb-3">Total de la Compra</h6>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
                                 <tr>
+                                    <td></td>
+                                    <td>Mayor</td>
+                                    <td>Detal</td>
+                                </tr>
+                                <tr>
                                     <td class="cart_total_label">Subtotal</td>
                                     <td class="cart_subtotal_amount">${{ Cart::subtotal() }}</td>
+                                    <td class="cart_subtotal_amountDetal">${{ $subtotalDetal }}</td>
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">IVA</td>
                                     <td class="cart_tax_amount">${{ Cart::tax() }}</td>
+                                    <td class="cart_tax_amountDetal">${{ $taxDetal }}</td>
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">Total</td>
                                     <td class="cart_total_amount"><strong>${{ Cart::total() }}</strong></td>
+                                    <td class="cart_total_amountDetal"><strong>${{ $totalDetal }}</strong></td>
                                 </tr>
                             </tbody>
                         </table>

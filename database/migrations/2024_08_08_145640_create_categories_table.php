@@ -45,6 +45,11 @@ return new class extends Migration
             "Reflectores", //16
             "Lámparas LED",  //17
             "Alumbrado Público", //18
+
+            "Cable eléctrico", //19
+            "Automotriz",//20
+            "Computación", //21
+            "Cerco eléctrico",//22
         ];
 
         for($i = 0; $i < count($categories); $i++){

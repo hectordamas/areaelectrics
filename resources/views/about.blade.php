@@ -31,18 +31,18 @@
 <!-- STAT SECTION ABOUT --> 
 <div class="section">
 	<div class="container">
-    	<div class="row align-items-center">
-        	<div class="col-lg-6">
+    	<div class="row">
+        	<div class="col-lg-5">
             	<div class="about_img scene mb-lg-0">
-                    <img src="{{ asset('assets/images/juguetes-sexuales.jpg') }}" alt="Nosotros: Airanza Sex Shop Imagen"/>
+                    <img src="{{ asset('assets/images/areaelectrics_tienda.jpeg') }}" class="rounded" alt="{{ env('APP_NAME') }} Nosotros"/>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-7 px-5">
                 <div class="heading_s1">
                     <h2>Acerca de Nosotros</h2>
                 </div>
-                <p>En Airanza Sex Shop, nos dedicamos a mejorar la vida íntima de nuestros clientes a través de una amplia gama de productos diseñados para el placer. Como tienda para adultos, ofrecemos una selección curada de juguetes sexuales tanto para hombres como para mujeres, asegurándonos de incluir opciones para todos los gustos y preferencias.</p>
-                <p>Nuestro objetivo es proporcionar todo lo necesario para una experiencia sexual plena y satisfactoria, con un enfoque en la calidad, seguridad y discreción. En Airanza Sex Shop, creemos que la intimidad y el placer son esenciales para una vida equilibrada y feliz, por lo que nos esforzamos en proporcionar una experiencia de compra única.</p>
+                <p><strong>Misión:</strong> En Área Electric, nos comprometemos a ofrecer a nuestros clientes lo último en tecnología en iluminación LED, seguridad, redes, fibra óptica, automotriz, electricidad y computación, garantizando calidad e innovación a precios competitivos. A lo largo de los años, hemos crecido y evolucionado, pero nuestra pasión por la excelencia y nuestro compromiso con el servicio al cliente siguen siendo nuestra prioridad</p>
+                <p><strong>Visión:</strong> Ser la empresa líder en soluciones tecnológicas en iluminación, seguridad, redes, fibra óptica, electricidad y computación, ofreciendo productos innovadores y accesibles que mejoren la vida de nuestros clientes. En Área Electric, aspiramos a expandir nuestra presencia en el mercado, impulsando el desarrollo sostenible a través de tecnología eficiente y un servicio excepcional, consolidándonos como un referente de calidad y confianza en la industria.</p>
             </div>
         </div>
     </div>
@@ -55,42 +55,43 @@
     	<div class="row justify-content-center">
         	<div class="col-lg-6 col-md-8">
             	<div class="heading_s1 text-center">
-                	<h2>¿Por qué escogernos?</h2>
+                	<h2>¿Por Qué Elegirnos?</h2>
                 </div>
-                <p class="text-center leads">Descubre porqué Airanza Sex Shop es tu mejor opción en productos íntimos:</p>
+                <p class="text-center leads">
+                    En Área Electric, no solo vendemos productos, brindamos soluciones que conectan tecnología y confianza. Somos una tienda minorista comprometida con ofrecerte lo mejor en iluminación LED, redes, fibra óptica, electricidad, seguridad y más, con el respaldo de marcas reconocidas y un servicio al cliente cercano y eficiente.                </p>
             </div>
         </div>
         <div class="row justify-content-center">
-        	<div class="col-lg-4 col-sm-6">
-            	<div class="icon_box icon_box_style4 box_shadow1">
-                	<div class="icon">
-                    	<i class="ti-medall"></i>
+            <div class="col-lg-4 col-sm-6">
+                <div class="icon_box icon_box_style4 box_shadow1">
+                    <div class="icon">
+                        <i class="fas fa-truck"></i>
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Calidad y Seguridad</h5>
-                        <p>Nos comprometemos a ofrecer productos de la más alta calidad, fabricados con materiales seguros para el cuerpo.</p>
+                        <h5>Delivery Gratis en Caracas</h5>
+                        <p>Recibe tus pedidos donde te encuentres. Ofrecemos envíos puerta a puerta en todo el territorio nacional, asegurando que tus productos lleguende forma rápida y segura. Delivery Gratis en la Ciudad de Caracas</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-            	<div class="icon_box icon_box_style4 box_shadow1">
-                	<div class="icon">
-                    	<i class="ti-comments-smiley"></i>
+                <div class="icon_box icon_box_style4 box_shadow1">
+                    <div class="icon">
+                        <i class="far fa-handshake"></i>
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Discreción Garantizada</h5>
-                        <p>Entendemos la importancia de la privacidad en la compra de productos para adultos. Por eso, todos nuestros envíos son discretos.</p>
+                        <h5>Envio Gratis por Mercado Libre</h5>
+                        <p>Aprovecha nuestro beneficio de <strong>envío totalmente gratis</strong> en tus compras realizadas a través de Mercado Libre. Recibe tus productos directamente en la puerta de tu casa, sin costos adicionales y con confianza.</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-            	<div class="icon_box icon_box_style4 box_shadow1">
-                	<div class="icon">
-                    	<i class="ti-headphone-alt"></i>
+                <div class="icon_box icon_box_style4 box_shadow1">
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>                    
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Atención al Cliente</h5>
-                        <p>Estamos disponibles para ayudarte en cada paso de tu compra. Desde la selección del producto hasta la entrega.</p>
+                        <h5>Envíos a nivel Nacional</h5>
+                        <p>Realizamos envíos a cualquier rincón del país. No importa dónde te encuentres, nos aseguramos de que tus productos lleguen de forma segura y puntual a tu destino. Trabajamos con las principales empresas de encomienda del país.</p>
                     </div>
                 </div>
             </div>

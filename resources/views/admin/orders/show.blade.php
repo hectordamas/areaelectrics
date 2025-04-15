@@ -66,8 +66,10 @@
                             <th>Talla</th>
                             <th>Color</th>
                             <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
+                            <th>Precio Mayor</th>
+                            <th>Precio Detal</th>
+                            <th>Total Mayor</th>
+                            <th>Total Detal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,22 +86,27 @@
                                 </td>
                                 <td class="text-primary">{{ $product->pivot->quantity }}</td>
                                 <td class="text-primary">${{ number_format($product->price, 2, '.', ',') }}</td>
+                                <td class="text-primary">${{ number_format($product->priceDetal, 2, '.', ',') }}</td>
                                 <td class="text-primary">${{ number_format($product->price * $product->pivot->quantity, 2, '.', ',') }}</td>
+                                <td class="text-primary">${{ number_format($product->priceDetal * $product->pivot->quantity, 2, '.', ',') }}</td>
                             </tr>
                         @endforeach
                     </tbody>
                     <tfoot class="table-dark bg-primary">
                         <tr>
-                            <th colspan="5" class="text-right">Subtotal</th>
+                            <th colspan="6" class="text-right">Subtotal</th>
                             <th>${{ number_format($order->subtotal, 2, '.', ',') }}</th>
+                            <th>${{ number_format($order->subtotalDetal, 2, '.', ',') }}</th>
                         </tr>
                         <tr>
-                            <th colspan="5" class="text-right">IVA</th>
+                            <th colspan="6" class="text-right">IVA</th>
                             <th>${{ number_format($order->tax, 2, '.', ',') }}</th>
+                            <th>${{ number_format($order->taxDetal, 2, '.', ',') }}</th>
                         </tr>
                         <tr>
-                            <th colspan="5" class="text-right">Total</th>
+                            <th colspan="6" class="text-right">Total</th>
                             <th>${{ number_format($order->total, 2, '.', ',') }}</th>
+                            <th>${{ number_format($order->totalDetal, 2, '.', ',') }}</th>
                         </tr>
                     </tfoot>
                 </table>

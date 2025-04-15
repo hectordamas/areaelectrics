@@ -9,9 +9,11 @@
     <div class="product_info">
         <h6 class="product_title"><a href="{{ url('nuestros-productos/' . $product->slug) }}">{{ $product->name }}</a></h6>
         <div class="product_price">
-            <span class="price">${{ number_format($product->price, 2, ',', '.') }}</span>
-            <del>${{ number_format($product->price * 1.10, 2, ',', '.') }}</del>
+           <strong>Precio al Mayor: </strong> <span class="price">${{ number_format($product->price, 2, ',', '.') }}</span>
         </div>
+        <div class="product_price">
+            <strong>Precio al Detal: </strong> <span class="price">${{ number_format($product->priceDetal, 2, ',', '.') }}</span>
+         </div>
         <div class="rating_wrap">
             <div class="rating">
                 <div class="product_rate" style="width:100%"></div>

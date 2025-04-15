@@ -39,7 +39,8 @@
                                                 <th>#</th>
                                                 <th>Fecha</th>
                                                 <th>Status</th>
-                                                <th>Total</th>
+                                                <th>Total Mayor</th>
+                                                <th>Total Detal</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
@@ -50,6 +51,7 @@
                                                 <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
                                                 <td>{{ $order->status }}</td>
                                                 <td>${{ number_format($order->total, 2, '.', ',') }}</td>
+                                                <td>${{ number_format($order->totalDetal, 2, '.', ',') }}</td>
                                                 <td>
                                                     <a href="{{ url('detalles-de-orden/' . $order->id) }}" class="btn btn-fill-out btn-sm">Ver</a>
                                                 </td>

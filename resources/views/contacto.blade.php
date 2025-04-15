@@ -36,7 +36,7 @@
                     </div>
                     <div class="contact_text">
                         <span>Instagram</span>
-                        <a href="https://www.instagram.com/airanzasexshop/" target="_blank">@airanzasexshop</a>
+                        <a href="https://www.instagram.com/areaelectric/" target="_blank">@areaelectric</a>
                     </div>
                 </div>
             </div>
@@ -47,20 +47,20 @@
                     </div>
                     <div class="contact_text">
                         <span>Correo Electrónico</span>
-                        <a href="mailto:info@airanzasexshop.com">info@airanzasexshop.com</a>
+                        <a href="mailto:info@areaelectric.com.ve">info@areaelectric.com.ve</a>
                     </div>
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
             	<div class="contact_wrap contact_style3">
                     <div class="contact_icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fab fa-whatsapp"></i>
                     </div>
                     <div class="contact_text">
-                        <span>Teléfono Celular</span>
+                        <span>WhatsApp</span>
                         <a 
-                            href="https://api.whatsapp.com/send?phone=584120206548&text=Hola, estoy interesado en conocer más sobre sus productos" 
-                            target="_blank">+58 412 020 6548</a>
+                            href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" 
+                            target="_blank">+58 414 378 0976</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
 	<div class="container">
     	<div class="row">
             <div class="d-none d-lg-block col-lg-6 pt-0 mt-0 pb-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.136273377976!2d-66.87104550812094!3d10.489922006542878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a590045bc2a7b%3A0x1a8393d7e24e1c91!2sAngel%20de%20la%20Suerte!5e0!3m2!1ses-419!2sve!4v1725644162922!5m2!1ses-419!2sve" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490.3833476330148!2d-66.87500785036356!3d10.49540191690729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59aae9b4d625%3A0x4ec5604d97b62126!2sInversiones%20Area%20Electric%202021!5e0!3m2!1ses-419!2sve!4v1744711223386!5m2!1ses-419!2sve" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-lg-6 pl-md-4">
             	<div class="heading_s1">

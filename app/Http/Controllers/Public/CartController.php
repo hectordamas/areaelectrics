@@ -15,7 +15,7 @@ use Auth;
 
 class CartController extends Controller
 {
-    private function add($id, $name, $quantity, $price, $image, $color, $size){
+    private function add($id, $name, $quantity, $price, $image, $color, $size, $priceDetal = null){
         Cart::add([
             'id' => $id, 
             'name' => $name, 
@@ -25,79 +25,95 @@ class CartController extends Controller
             'options' => [
                 'image' => $image,
                 'color' => $color ?: null,
-                'size' => $size ?: null
+                'size' => $size ?: null,
+                'price_detal' => $priceDetal ?: 0
             ]
         ]);
     }
 
     public function index(){
-        return view('cart.index');
+        $cartItems = Cart::content();
+    
+        $subtotalDetal = $cartItems->sum(fn($item) => $item->options['price_detal'] * $item->qty);
+        $taxDetal = $cartItems->sum(fn($item) => ($item->options['price_detal'] * $item->qty) * ($item->taxRate / 100));
+        $totalDetal = $subtotalDetal + $taxDetal;
+    
+        return view('cart.index', [
+            'subtotalDetal' => number_format($subtotalDetal, 2),
+            'taxDetal' => number_format($taxDetal, 2),
+            'totalDetal' => number_format($totalDetal, 2),
+        ]);
     }
 
     public function addToCart(Request $request){
         if($request->name && $request->price && $request->image){
-            $this->add($request->id, $request->name, $request->quantity, $request->price, $request->image, $request->color, $request->size);
-        }else{
+            $this->add($request->id, $request->name, $request->quantity, $request->price, $request->image, $request->color, $request->size, $request->price_detal);
+        } else {
             $product = Product::find($request->id);
-            $image = null;
-            if($product->images()->count() > 0){
-                $image = $product->images()->first()->url;
-            }
-            $this->add($request->id, $product->name, $request->quantity, $product->price, $image, $request->color, $request->size);
+            $image = $product->images()->count() ? $product->images()->first()->url : null;
+            $this->add($request->id, $product->name, $request->quantity, $product->price, $image, $request->color, $request->size, $product->priceDetal);
         }
 
-        $count = Cart::count();
-        $cart_subtotal = Cart::subtotal();
-        $items = Cart::content()->reverse()->take(2)->reverse();
+        $items = Cart::content();
+        $detalSubtotal = $items->sum(fn($item) => $item->options['price_detal'] * $item->qty);
+        $taxDetal = $items->sum(fn($item) => ($item->options['price_detal'] * $item->qty) * ($item->taxRate / 100));
+        $totalDetal = $detalSubtotal + $taxDetal;
 
         return response()->json([
             'success' => 'Has añadido este producto al carrito',
-            'count' => $count,
-            'cart_subtotal' => $cart_subtotal,
-            'items' => $items,
+            'count' => Cart::count(),
+            'cart_subtotal' => Cart::subtotal(),
+            'items' => $items->reverse()->take(2)->reverse(),
+            'subtotalDetal' => number_format($detalSubtotal, 2),
+            'taxDetal' => number_format($taxDetal, 2),
+            'totalDetal' => number_format($totalDetal, 2),
         ]);
     }
 
     public function updateCartItem(Request $request){
         Cart::update($request->rowId, $request->quantity); 
 
-        $count = Cart::count();
-        $cart_subtotal = Cart::subtotal();
-        $cart_total = Cart::total();
-        $cart_tax = Cart::tax();
+        $items = Cart::content();
+        $detalSubtotal = $items->sum(fn($item) => $item->options['price_detal'] * $item->qty);
+        $taxDetal = $items->sum(fn($item) => ($item->options['price_detal'] * $item->qty) * ($item->taxRate / 100));
+        $totalDetal = $detalSubtotal + $taxDetal;
+
         $item = Cart::get($request->rowId);
 
-        $items = Cart::content()->reverse()->take(2)->reverse();
-
         return response()->json([
-            'success' => 'Has añadido este producto al carrito',
-            'count' => $count,
-            'cart_subtotal' => $cart_subtotal,
-            'cart_total' => $cart_total,
-            'cart_tax' => $cart_tax,
-            'items' => $items,
+            'success' => 'Producto actualizado en el carrito',
+            'count' => Cart::count(),
+            'cart_subtotal' => Cart::subtotal(),
+            'cart_total' => Cart::total(),
+            'cart_tax' => Cart::tax(),
+            'subtotalDetal' => number_format($detalSubtotal, 2),
+            'taxDetal' => number_format($taxDetal, 2),
+            'totalDetal' => number_format($totalDetal, 2),
+            'items' => $items->reverse()->take(2)->reverse(),
             'updatedItemQuantity' => $item->qty,
-            'updatedItemPrice' => $item->qty * $item->price,
+            'updatedItemPrice' => $item->qty * $item->price,    
+            'updatedItemPriceDetal' => $item->qty * ($item->options->price_detal ?? $item->price),
         ]);
     }
 
     public function removeCartItem(Request $request){
         Cart::remove($request->rowId);
 
-        $count = Cart::count();
-        $cart_subtotal = Cart::subtotal();
-        $cart_total = Cart::total();
-        $cart_tax = Cart::tax();
-
-        $items = Cart::content()->reverse()->take(2)->reverse();
+        $items = Cart::content();
+        $detalSubtotal = $items->sum(fn($item) => $item->options['price_detal'] * $item->qty);
+        $taxDetal = $items->sum(fn($item) => ($item->options['price_detal'] * $item->qty) * ($item->taxRate / 100));
+        $totalDetal = $detalSubtotal + $taxDetal;
 
         return response()->json([
-            'success' => 'Has añadido este producto al carrito',
-            'count' => $count,
-            'cart_subtotal' => $cart_subtotal,
-            'cart_total' => $cart_total,
-            'cart_tax' => $cart_tax,
-            'items' => $items
+            'success' => 'Producto eliminado del carrito',
+            'count' => Cart::count(),
+            'cart_subtotal' => Cart::subtotal(),
+            'cart_total' => Cart::total(),
+            'cart_tax' => Cart::tax(),
+            'subtotalDetal' => number_format($detalSubtotal, 2),
+            'taxDetal' => number_format($taxDetal, 2),
+            'totalDetal' => number_format($totalDetal, 2),
+            'items' => $items->reverse()->take(2)->reverse()
         ]);
     }
 

@@ -71,9 +71,9 @@
                         </div>
                         <ul class="contact_detail text-center text-lg-left">
                             <li>
-                                <a href="https://api.whatsapp.com/send?phone=584141107270&text=Hola!" 
+                                <a href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos"
                                     target="_blank">
-                                    <i class="fab fa-whatsapp"></i><span>+58 414-1107270</span>
+                                    <i class="fab fa-whatsapp"></i><span>+58 414 378 0976</span>
                                 </a>
                             </li>
                         </ul>
@@ -110,8 +110,8 @@
     	<div class="container">
             <nav class="navbar navbar-expand-lg py-3"> 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo_light" src="{{ asset('assets/images/logo_light.png') }}" alt="AiranzaSexShop logo" />
-                    <img class="logo_dark" src="{{ asset('assets/images/logo_dark.png') }}" alt="AiranzaSexShop logo" width="160"/>
+                    <img class="logo_light" src="{{ asset('assets/images/logo_light.png') }}" alt="{{ env('APP_NAME') }} Logo Light" style="max-width: 160px;" />
+                    <img class="logo_dark" src="{{ asset('assets/images/logo_dark.png') }}" alt="{{ env('APP_NAME') }} Logo Dark" style="max-width: 160px;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false"> 
                     <span class="ion-android-menu"></span>
@@ -224,7 +224,13 @@
                                     <a href="#">
                                         <img src="{{ isset($cartItem->options['image']) ? $cartItem->options['image'] : null }}" alt="Carrito de compras {{ $cartItem->name }}"> {{ $cartItem->name }}
                                     </a>
-                                    <span class="cart_quantity"> {{ $cartItem->qty }} x <span class="cart_amount"> <span class="price_symbole">$</span></span>{{ $cartItem->price }}</span>
+                                    <span class="cart_quantity">
+                                        {{ $cartItem->qty }} x 
+                                        <span class="cart_amount">
+                                            <small>(Detal: ${{ $cartItem->price_detal }})</small> <br>
+                                            <small>(Mayor: ${{ $cartItem->price ?? 'N/A' }})</small>
+                                        </span>
+                                    </span>
                                 </li>
                                 @empty
                                 <li>
@@ -240,11 +246,32 @@
                                 @endforelse
                             </ul>
                             <div class="cart_footer">
-                                <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span>{{ Cart::subtotal() }}</span></p>
+                                <!-- Subtotal Mayor: Basado en el precio mayor por defecto -->
+                                <p class="cart_total"><strong>Subtotal Mayor:</strong> 
+                                    <span class="cart_price" id="cart_subtotal_mayor">
+                                        <span class="price_symbole">$</span>{{ Cart::subtotal() }}
+                                    </span>
+                                </p>
+                            
+                                <!-- Subtotal Detal: Basado en el precio detallado de cada producto -->
+                                @php
+                                    $subtotalDetal = Cart::content()->reduce(function($carry, $item) {
+                                        return $carry + ($item->qty * ($item->options['price_detal'] ?? $item->price)); // Usa el precio de detal si existe
+                                    }, 0);
+                                @endphp
+                                <p class="cart_total"><strong>Subtotal Detal:</strong> 
+                                    <span class="cart_price" id="cart_subtotal_detal">
+                                        <span class="price_symbole">$</span>{{ number_format($subtotalDetal, 2) }}
+                                    </span>
+                                </p>
+                            
                                 <p class="cart_buttons">
-                                    <a href="{{ url('carrito-de-compras') }}" class="btn btn-fill-line btn-radius btn-block view-cart"><i class="icon-basket-loaded"></i> Ver Carrito</a>
+                                    <a href="{{ url('carrito-de-compras') }}" class="btn btn-fill-line btn-radius btn-block view-cart">
+                                        <i class="icon-basket-loaded"></i> Ver Carrito
+                                    </a>
                                 </p>
                             </div>
+                            
                         </div>
                     </li>
                 </ul>
@@ -257,6 +284,7 @@
 
 
 @yield('content')
+
 
 <!-- START FOOTER -->
 <footer class="footer_dark">
@@ -277,14 +305,14 @@
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>
-                                <p>+58 414-1107270</p>
+                                <p>+58 414 378 0976</p>
                             </li>
                         </ul>
                     </div>
                     <div class="widget">
                         <ul class="social_icons contact_info_light">
                             <li><a href="https://www.instagram.com/areaelectric/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=584141107270&text=Hola!" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
                             <li><a href="https://www.tiktok.com/areaelectric2021" target="_blank"><i class="fab fa-tiktok"  style="font-size: 30px;"></i></a></li>
                         </ul>
                     </div>
@@ -333,19 +361,24 @@
             </div>
         </div>
     </div>
-    <div class="bottom_footer border-top-tran">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} {{ env('APP_NAME') }} | Desarrollada con ❤️ Por <a href="https://www.linkedin.com/in/hectordamas/" target="_blank">Héctor Damas</a> </p>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 <!-- END FOOTER -->
 
-<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
+<!-- Iconos Flotantes -->
+<div class="floating-icons">
+    <!-- Icono de WhatsApp -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Icono de Instagram -->
+    <a href="https://www.instagram.com/yourprofile" target="_blank" class="instagram" title="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <!-- Icono de Ubicación -->
+    <a href="https://www.google.com/maps?q=tu+ubicacion" target="_blank" class="location" title="Ubicación">
+        <i class="fas fa-map-marker-alt"></i>
+    </a>
+</div>
 
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script> 
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>

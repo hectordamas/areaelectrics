@@ -33,8 +33,10 @@
                         <a href="#" class="text-capitalize">{{ $product->name }}</a>
                     </h4>
                     <div class="product_price">
-                        <span class="price" style="font-size: 26px;">${{ number_format($product->price, 2, ',', '.') }}</span>
-                        <del>${{ number_format($product->price * 1.10, 2, ',', '.') }}</del>
+                        <strong>Precio al Mayor: </strong> <span class="price">${{ number_format($product->price, 2, ',', '.') }}</span>
+                    </div>
+                    <div class="product_price">
+                        <strong>Precio al Detal: </strong> <span class="price">${{ number_format($product->priceDetal, 2, ',', '.') }}</span>
                     </div>
 
                     @if($product->colors->count() > 0 || $product->sizes->count() > 0)
@@ -77,6 +79,7 @@
                     <input type="hidden" id="id" name="id" value="{{ $product->id }}">
                     <input type="hidden" id="name" name="name" value="{{ $product->name }}">
                     <input type="hidden" id="price" name="price" value="{{ $product->price }}">
+                    <input type="hidden" id="price" name="priceDetal" value="{{ $product->priceDetal }}">
                     <input type="hidden" id="image" name="image" value="{{ $product->images()->first()->url }}">
                     <div class="cart-product-quantity">
                         <div class="quantity">

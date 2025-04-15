@@ -26,7 +26,7 @@
                             <div class="col-lg-7 col-md-8 col-sm-9 col-10">
                                 <div class="banner_content2">
                                     <h6 class="mb-2 mb-sm-3 staggered-animation text-uppercase" data-animation="fadeInDown" data-animation-delay="0.2s">Todo En Redes</h6>
-                                    <h3 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Compra Equipos y Accesorios de Redes.</h3>
+                                    <h3 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Equipos y Accesorios de Redes.</h3>
                                     <p class="staggered-animation text-dark" style="font-weight:500;" data-animation="fadeInUp" data-animation-delay="0.4s">Encuentra routers, switches, cableado UTP, y conectores para tus instalaciones.</p>
                                     <a class="btn btn-fill-line btn-radius staggered-animation text-uppercase" style="font-weight:500;"  href="{{ url('tienda-en-linea') }}" data-animation="fadeInUp" data-animation-delay="0.5s">Ver Productos</a>
                                 </div>
@@ -60,7 +60,7 @@
                                     <h6 class="mb-2 mb-sm-3 staggered-animation text-uppercase" data-animation="fadeInDown" data-animation-delay="0.2s">Iluminación LED</h6>
                                     <h3 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Paneles y reflectores modernos.</h3>
                                     <p class="staggered-animation text-dark" style="font-weight:500;" data-animation="fadeInUp" data-animation-delay="0.4s">Ilumina tus espacios con productos LED eficientes y modernos. Ideales para hogar o negocio.</p>
-                                    <a class="btn btn-fill-line btn-radius staggered-animation text-uppercase" style="font-weight:500;"  href="{{ url('nuestras-categorias/cables-4') }}" data-animation="fadeInUp" data-animation-delay="0.5s">Ver Iluminación</a>
+                                    <a class="btn btn-fill-line btn-radius staggered-animation text-uppercase" style="font-weight:500;"  href="{{ url('nuestras-categorias/iluminacion-9') }}" data-animation="fadeInUp" data-animation-delay="0.5s">Ver Iluminación</a>
                                 </div>
                             </div>
                         </div>
@@ -115,15 +115,15 @@
     <div class="section pb_20 small_pt">
     	<div class="container">
         	<div class="row">
-            	<div class="col-md-4">
-                    <img src="{{ getImageUrl('assets/images/banner-a.png') }}" alt="">
+            	<div class="col-md-4 mb-3">
+                    <img src="{{ getImageUrl('assets/images/banner-a.png') }}" class="rounded" alt="">
                 </div>
-                <div class="col-md-4">
-                    <img src="{{ getImageUrl('assets/images/banner-b.png') }}" alt="">
+                <div class="col-md-4 mb-3">
+                    <img src="{{ getImageUrl('assets/images/banner-b.png') }}" class="rounded" alt="">
 
                 </div>
-                <div class="col-md-4">
-                    <img src="{{ getImageUrl('assets/images/banner-c.png') }}" alt="">
+                <div class="col-md-4 mb-3">
+                    <img src="{{ getImageUrl('assets/images/banner-c.png') }}" class="rounded" alt="">
 
                 </div>
             </div>

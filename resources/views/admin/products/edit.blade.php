@@ -189,7 +189,17 @@
                                                 <input type="number" step="any" class="form-control" name="price" id="price" required value="{{ $product->price }}"/>
                                                 <strong class="text-success" id="priceFormat">${{number_format($product->price, 2, '.', ',')}}</strong>
                                             </div>
-                                        
+                                            <div class="col-md-6 form-group">
+                                                <label for="priceDetal" class="font-weight-bold">Precio Detal</label>
+                                                <input type="number" step="any" class="form-control" name="priceDetal" id="priceDetal" required value="{{ $product->priceDetal }}"/>
+                                                <strong class="text-success" id="priceDetalFormat">${{number_format($product->priceDetal, 2, '.', ',')}}</strong>
+                                            </div>
+
+                                            <div class="col-md-6 form-group">
+                                                <label class="font-weight-bold">YouTube ID</label>
+                                                <input type="text" class="form-control" id="youtube_id" name="youtube_id" value="{{ $product->youtube_id }}">
+                                            </div>
+
                                             <div class="form-group col-md-6">
                                                 <label for="description" class="font-weight-bold">Descripción</label>
                                                 <textarea rows="6" id="description" class="form-control" name="description" autofocus>{!! $product->description !!}</textarea>
@@ -212,6 +222,11 @@
                                                     <input type="checkbox" value="Sí" id="hidden"  name="hidden" @if($product->hidden) checked @endif/>
                                                     No Mostrar
                                                 </label>
+
+                                                <label for="ofertasDeLaSemana" class="font-weight-bold mt-3 ml-3">
+                                                    <input type="checkbox" value="Sí" id="ofertasDeLaSemana"  name="ofertasDeLaSemana" @if($product->ofertasDeLaSemana) checked @endif />
+                                                    Agregar a ofertas de las Semana
+                                                </label>
                                             
                                                 <div class="row" id="sortable-images">
                                                     @foreach($product->images as $image)
@@ -227,10 +242,7 @@
                                             
                                             </div>
 
-                                            <div class="col-md-6 form-group">
-                                                <label class="font-weight-bold">YouTube ID</label>
-                                                <input type="text" class="form-control" id="youtube_id" name="youtube_id" value="{{ $product->youtube_id }}">
-                                            </div>
+
                                         </div>
                                     
                                         <div class="row">

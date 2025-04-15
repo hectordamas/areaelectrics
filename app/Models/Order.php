@@ -61,4 +61,23 @@ class Order extends Model
             return $product->price * $product->pivot->quantity;
         }) * 0.16;
     }
+
+    public function getTotalDetalAttribute()
+    {
+        return ($this->products->sum(function ($product) {
+            return $product->priceDetal * $product->pivot->quantity;
+        })) * 1.16;
+    }
+
+    public function getSubtotalDetalAttribute(){
+        return $this->products->sum(function ($product) {
+            return $product->priceDetal * $product->pivot->quantity;
+        });
+    }
+
+    public function getTaxDetalAttribute(){
+        return $this->products->sum(function ($product) {
+            return $product->priceDetal * $product->pivot->quantity;
+        }) * 0.16;
+    }
 }
