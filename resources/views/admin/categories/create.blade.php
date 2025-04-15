@@ -19,7 +19,19 @@
                             <label for="name" class="font-weight-bold">Nombre de la categoría</label>
                             <input type="text" class="form-control" name="name" id="name">
                         </div>
+
+                        
+                        <div class="col-md-3 form-group">
+                            <label for="categories" class="font-weight-bold">Categoría Padre</label>
+                            <select class="select2 form-control" name="category" required>
+                                <option value="">Selecciona una Categoría</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
+
                 
                     <div class="row">
                         <div class="col-md-12">

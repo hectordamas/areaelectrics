@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('order')->default(0);
         });
 
-        for($i = 1; $i < 31; $i++){
+        for($i = 1; $i < 41; $i++){
             $image = new Image();
             $image->url = 'assets/productsImages/' . $i . '.jpg';
             $image->save();

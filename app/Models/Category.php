@@ -13,4 +13,16 @@ class Category extends Model
     public function products(){
         return $this->belongsToMany(Product::class, 'category_product');
     }
+
+        // Relación con la subcategoría (hijos)
+        public function subcategories()
+        {
+            return $this->hasMany(Category::class, 'parent_id')->orderBy('order');
+        }
+    
+        // Relación con la categoría padre
+        public function category()
+        {
+            return $this->belongsTo(Category::class, 'parent_id');
+        }
 }

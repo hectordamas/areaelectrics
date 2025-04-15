@@ -1,64 +1,111 @@
 @extends('layouts.app')
+
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Recuperar Contraseña</title>
 @endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center py-5">
-        <div class="col-md-6">
-            <div class="login_wrap">
-                <div class="padding_eight_all bg-white">
-                    <div class="heading_s1">
-                        <h3>Restablecer Contraseña</h3>
-                    </div>
+<style>
+    .login-container {
+        background: #f5f7fa;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 15px;
+    }
 
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    .login-box {
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 40px;
+        width: 100%;
+        max-width: 500px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
 
-                    <form method="POST" action="{{ route('password.update') }}" class="row">
-                        @csrf
+    .login-box h3 {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 25px;
+        text-align: center;
+    }
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+    .login-box .form-control {
+        border-radius: 8px;
+        padding: 12px;
+        border: 1px solid #ccc;
+    }
 
-                        <div class="col-md-12 mb-3">
-                            <label for="email">Correo Electrónico</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+    .login-box .btn {
+        background: #333;
+        color: #fff;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
 
-                        <div class="col-md-12 mb-3">
-                            <label for="password">Contraseña</label>
+    .login-box .btn:hover {
+        background: #555;
+    }
 
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+    .alert-success {
+        text-align: center;
+        font-weight: 500;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
 
-                        <div class="col-md-12 mb-3">
-                            <label for="password-confirm">Confirmar Contraseña</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        </div>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-fill-out btn-block btn-radius">
-                                <i class="fas fa-paper-plane"></i> Restablecer Contraseña
-                            </button>
-                        </div>
-                    </form>
-                </div>
+<div class="login-container">
+    <div class="login-box">
+        <h3>Restablecer Contraseña</h3>
+
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('password.update') }}">
+            @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
+
+            <div class="form-group mb-3">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                       name="email" value="{{ $email ?? old('email') }}" required autofocus
+                       placeholder="Correo Electrónico">
+                @error('email')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
             </div>
 
-        </div>
+            <div class="form-group mb-3">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                       name="password" required placeholder="Nueva Contraseña">
+                @error('password')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+
+            <div class="form-group mb-4">
+                <input id="password-confirm" type="password" class="form-control"
+                       name="password_confirmation" required placeholder="Confirmar Contraseña">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-block">
+                    <i class="fas fa-paper-plane"></i> Restablecer Contraseña
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

@@ -1,16 +1,4 @@
 $(document).ready(function(){
-    //Colores Producto
-    $('.selectColor').on('click', function(){
-      var color = $(this).data('color')
-      $('#color').val(color);
-    });
-
-    //Tallas Producto
-    $('.selectSize').on('click', function(){
-      var size = $(this).data('size')
-      $('#size').val(size);
-    });
-
     //Añadir al Carrito
 
     //Añadir al carrito desde la página Show
@@ -20,8 +8,6 @@ $(document).ready(function(){
       let price = $('#price').val();
       let image = $('#image').val();
       let quantity = $('#quantity').val();
-      let size = $('#size').val();
-      let color = $('#color').val();
 
       $.ajax({
         headers:{
@@ -29,7 +15,7 @@ $(document).ready(function(){
         },
         url:'/cart/addToCart',
         type:'POST',
-        data: { id, name, price, image, quantity, size, color},
+        data: { id, name, price, image, quantity},
         success:function(data){
           Swal.fire({
             icon: 'success',

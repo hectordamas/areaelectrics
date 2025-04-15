@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\{Category};
 use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
@@ -20,12 +20,20 @@ class CategoriesController extends Controller
     }
 
     public function create(){
-        return view('admin.categories.create');
+        $categories = Category::orderBy('order')
+        ->whereNull('parent_id')
+        ->orderBy('id')
+        ->get();
+
+        return view('admin.categories.create', [
+            'categories' => $categories
+        ]);
     }
 
     public function store(Request $request){
         $category = new Category();
         $category->name = $request->name;
+        $category->parent_id = $request->category;
         $category->slug = Str::slug($request->name);
         $category->save();
 
@@ -37,9 +45,16 @@ class CategoriesController extends Controller
 
     public function edit($id){
         $category = Category::find($id);
-        
+
+        $categories = Category::orderBy('order')
+        ->whereNull('parent_id')
+        ->orderBy('id')
+        ->get();
+
         return view('admin.categories.edit', [
-            'category' => $category
+            'category' => $category,
+            'categories' => $categories
+
         ]);
     }
 
@@ -47,6 +62,7 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
+        $category->parent_id = $request->category;
         $category->save();
 
         $category->slug = $category->slug . '-' . $category->id;

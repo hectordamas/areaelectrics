@@ -2,7 +2,7 @@
     <div class="product_img" style="cursor: pointer;" onclick="window.open('{{ url('nuestros-productos/' . $product->slug) }}', '_self')">
         <a href="{{ url('nuestros-productos/' . $product->slug) }}">
             @if($product->images()->first())
-                <img src="{{ getImageUrl($product->images()->first()->url) }}" alt="Imagen del Producto: {{ $product->name }} en Fiber Solutions">
+                <img src="{{ getImageUrl($product->images()->first()->url) }}" alt="Imagen del Producto: {{ $product->name }} en {{ env('APP_NAME') }}">
             @endif 
         </a>
     </div>

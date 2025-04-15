@@ -20,16 +20,31 @@ return new class extends Migration
             $table->string("hidden")->nullable();
             $table->longText("slug")->nullable();
             $table->bigInteger('order')->default(0);
+            $table->unsignedBigInteger('parent_id')->nullable(); // 1️⃣ Definir primero
+
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
         });
 
         $categories = [
-            "Lencería", //1
-            "Plug", //2
-            "Vibradores", //3
-            'Succionadores', //4
-            'Fetichismo', //5
-            "Amarres - Bondage", //6,
-            "Consoladores" //7
+            "Routers y Switches", //1
+            "Fibra Óptica", //2
+            "Streaming", //3
+            'Cables', //4
+            'Accesorio de Redes', //5
+            "Modem", //6,
+            "Entensores - Repetidores", //7
+            'Ferretería', //8
+            "Iluminación", //9
+            "Baterías y Pilas", //10
+            "Rack y Bandejas", //11
+            "Tapas y Enchufes", //12
+            "UPS", //13
+            "Cámaras WiFi", //14 
+            "CCTV", //15
+
+            "Reflectores", //16
+            "Lámparas LED",  //17
+            "Alumbrado Público", //18
         ];
 
         for($i = 0; $i < count($categories); $i++){
@@ -39,7 +54,14 @@ return new class extends Migration
             $category->save();
     
             $category->slug = $category->slug . '-' . $category->id;
+
             $category->save();
+
+            if(in_array($category->id, [16, 17, 18])){
+                $category->parent_id = 9;
+            }
+            $category->save();
+
         }
     }
 

@@ -31,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
             ->orderBy('id')
             ->get();
     
-            $categories = Category::orderBy('order')
+            $categories = Category::whereNull('parent_id')
+            ->orderBy('order')
             ->orderBy('id')
             ->get();
     

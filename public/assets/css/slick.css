@@ -55,8 +55,8 @@
     left: 0;
 
     display: block;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0; /*Normalmente en auto*/
+    margin-right: 0;/*Normalmente en auto*/
 }
 .slick-track:before,
 .slick-track:after

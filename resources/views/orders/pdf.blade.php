@@ -121,7 +121,7 @@
     <table width="100%">
         <tr>
             <td align="left" style="width: 50%;">
-                &copy; {{ date('Y') }} Fiber Solutions - Todos los derechos reservados.
+                &copy; {{ date('Y') }} {{ env('APP_NAME') }} - Todos los derechos reservados.
             </td>
         </tr>
 

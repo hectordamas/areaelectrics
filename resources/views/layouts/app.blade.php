@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">	
 <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css')}}">
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 <!-- Icon Font CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css')}}">
@@ -47,10 +48,10 @@
 
     @if(request()->is('/'))
     <div class="preloader">
-        <div class="lds-ellipsis">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div 
+            class="d-flex justify-content-center align-items-center" 
+            style="width: 100%; height:100%; background-color: rgba(255, 255, 255, 0.3);">
+            <span class="loader"></span>
         </div>
     </div>
     @endif
@@ -58,33 +59,48 @@
 
 <!-- START HEADER -->
 <header class="header_wrap fixed-top header_with_topbar shadow-sm">
-    <div class="top-header bg-dark light_skin">
+    <div class="top-header light_skin bg_dark">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 d-none d-md-block">
-                	<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                        <div class="lng_dropdown mr-2">
+                            <select name="countries" class="custome_select">
+                                <option value='es' data-image="{{ asset('assets/images/ven.png') }}" data-title="Venezuela">Venezuela</option>
+                            </select>
+                        </div>
                         <ul class="contact_detail text-center text-lg-left">
-                            <li><i class="ti-email"></i><span>info@airanzasexshop.com</span></li>
+                            <li>
+                                <a href="https://api.whatsapp.com/send?phone=584141107270&text=Hola!" 
+                                    target="_blank">
+                                    <i class="fab fa-whatsapp"></i><span>+58 414-1107270</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
-                	<div class="text-center text-md-right">
-                       	<ul class="header_list">
-                            <li><a href="#"><i class="ti-heart"></i><span>Lista de Favoritos</span></a></li>
-                            @auth
-                            <li class="d-none d-md-inline-block">
-                                <form action="{{ route('logout') }}" id="logout-form" method="post">
-                                    @csrf
-                                    <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span>
-                                    </a>
-                                </form>
-                            </li>
+                    <div class="text-center text-md-right">
+                           <ul class="header_list">
+                            @guest
+                                <li class="d-none d-md-inline-block"><a href="{{ url('login') }}"><i class="fas fa-user"></i> <span>Inicia Sesión</span></a></li>
+                                <li class="d-none d-md-inline-block"><a href="{{ url('register') }}"><i class="fas fa-user-plus"></i> <span>Registrate</span></a></li>
                             @else
-                            <li><a href="{{ route('login') }}"><i class="ti-user"></i><span>Inicia Sesión</span></a></li>
-                            @endauth
-						</ul>
+                                @if(Auth::user()->role == 'Administrador')
+                                    <li class="d-none d-md-inline-block">
+                                        <a href="{{ url('home') }}"><i class="fas fa-users-cog"></i> <span>Administrador</span></a>
+                                    </li>
+                                @endif
+                                <li class="d-none d-md-inline-block">
+                                    <form action="{{ route('logout') }}" id="logout-form" method="post">
+                                        @csrf
+                                        <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">
+                                            <i class="fas fa-sign-out-alt"></i> <span>Cerrar Sesión</span>
+                                        </a>
+                                    </form>
+                                </li>
+                            @endguest
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -104,27 +120,74 @@
                     <ul class="navbar-nav">
                         <li><a class="nav-link nav_item {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a></li> 
                         <li><a class="nav-link nav_item {{ request()->is('tienda-en-linea') ? 'active' : '' }}" href="{{ url('/tienda-en-linea') }}">Tienda</a></li> 
-                        <li class="dropdown">
-                            <a class="dropdown-toggle nav-link {{ request()->is('nuestras-categorias/*') ? 'active' : '' }}" href="#" data-toggle="dropdown">Nuestros Productos</a>
-                            <div class="dropdown-menu" style="margin-top: -15px;">
-                                <ul> 
-                                    <li class="dropdown-header">Nuestros Productos</li>
-                                    @foreach ($globalCategories as $category)
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="{{ url('nuestras-categorias/' . $category->slug) }}">{{$category->name}}</a>
-                                    </li>    
-                                    @endforeach
+                        <li class="dropdown dropdown-mega-menu">
+                            <a class="dropdown-toggle nav-link {{ request()->is('nuestras-categorias/*') ? 'active' : '' }}" href="#" data-toggle="dropdown">
+                                Nuestros Productos
+                            </a>
+                            <div class="dropdown-menu" style="margin-top: -30px;">
+                                <ul class="mega-menu d-lg-flex">
+                                    @for($i = 0; $i < count($globalSections); $i++)
+                                    <li class="mega-menu-col col-lg-3">
+                                        <ul> 
+                                            @foreach ($globalCategories->skip($globalSections[$i])->take(5) as $category)
+                                                <li class="dropdown-submenu">
+                                                    <a class="dropdown-header nav-link nav_item  @if ($category->subcategories->count()) dropdown-toggler @endif" 
+                                                       href="{{ url('nuestras-categorias/' . $category->slug) }}"
+                                                       @if ($category->subcategories->count()) 
+                                                        onclick="window.open('{{ url('nuestras-categorias/' . $category->slug) }}', '_self')"
+                                                       @endif
+                                                       >
+                                                        {{ $category->name }}
+                                                    </a>
+                        
+                                                    @if ($category->subcategories->count())
+                                                        <ul class="dropdown-menu">
+                                                            @foreach ($category->subcategories as $sub)
+                                                                <li>
+                                                                    <a class="dropdown-item" href="{{ url('nuestras-categorias/' . $sub->slug) }}">
+                                                                        {{ $sub->name }}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endfor
                                 </ul>
                             </div>
-                        </li>                        
+                        </li>
+                        
+                        <li class="dropdown dropdown-mega-menu">
+                            <a class="dropdown-toggle nav-link {{ request()->is('nuestras-marcas/*') ? 'active' : '' }}" href="#" data-toggle="dropdown">Marcas</a>
+                            <div class="dropdown-menu" style="margin-top: -30px;">
+                                <ul class="mega-menu d-lg-flex">
+                                    @for($i = 0; $i < count($globalSections); $i++)
+                                    <li class="mega-menu-col col-lg-3">
+                                        <ul> 
+                                            @foreach ($globalBrands->skip($globalSections[$i])->take(5) as $brand)
+                                            <li>
+                                                <a class="dropdown-header nav-link nav_item" href="{{ url('nuestras-marcas/' . $brand->slug) }}">{{$brand->name}}</a>
+                                            </li>    
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endfor
+                                </ul>
+                            </div>
+                        </li>                     
                         <li><a class="nav-link nav_item {{ request()->is('nosotros') ? 'active' : '' }}" href="{{ url('nosotros') }}">Nosotros</a></li> 
                         <li><a class="nav-link nav_item {{ request()->is('contacto') ? 'active' : '' }}" href="{{ url('contacto') }}">Contacto</a></li> 
+                        <li><a class="nav-link nav_item d-list-item d-md-none" href="{{ url('login') }}">Inicia Sesión</a></li> 
+                        <li><a class="nav-link nav_item d-list-item d-md-none" href="{{ url('register') }}">Registrate</a></li> 
+                        
                         @auth
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">{{ Auth::user()->name }}</a>
+                            <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu">
                                 <ul> 
-                                    <li class="dropdown-header">Mi Cuenta</li>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ url('mis-ordenes') }}">Mis Órdenes</a></li> 
                                     @if(Auth::user()->role == 'Administrador')
                                     <li><a class="dropdown-item nav-link nav_item" href="{{ url('home') }}">Administrador</a></li> 
@@ -138,19 +201,8 @@
                                         </a>
                                     </li> 
                                 </ul>
-                            </div>   
-                        </li>
-                        @else
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="{{ route('login') }}">Mi Cuenta</a>
-                            <div class="dropdown-menu">
-                                <ul> 
-                                    <li class="dropdown-header">Mi Cuenta</li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{ route('login') }}">Inicia Sesión</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{ route('register') }}">Regístrate</a></li>
-                                </ul>
-                            </div>   
-                        </li>
+                            </div>
+                        </li>                                
                         @endauth
                     </ul>
                 </div>
@@ -206,71 +258,75 @@
 
 @yield('content')
 
-
+<!-- START FOOTER -->
 <footer class="footer_dark">
-	<div class="footer_top">
+    <div class="footer_top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                	<div class="widget">
-                        <div class="footer_logo">
-                            <a href="{{ url('/') }}">
-                                <img src="{{ asset('assets/images/logo_light.png') }}" alt="Airanza Sex Shop Logo" width="200">
-                            </a>
-                        </div>
-                        <p>Somos una tienda para adultos que ofrece una amplia selección de juguetes sexuales para hombres y mujeres, todo lo que necesita para una experiencia sensual.</p>
+                    <div class="footer_logo">
+                        <a href="#">
+                            <img src="{{ asset('assets/images/logo_light.png') }}" style="max-width: 240px;" alt="logo">
+                        </a>
                     </div>
                     <div class="widget">
-                        <ul class="social_icons social_white">
-                            <li><a href="#"><i style="font-size: 25px;" class="ion-social-facebook"></i></a></li>
-                            <li><a href="https://wa.me/584120206548?text=Hola!" target="_blank"><i style="font-size: 25px;" class="ion-social-whatsapp"></i></a></li>
-                            <li><a href="https://www.instagram.com/airanzasexshop/" target="_blank"><i style="font-size: 25px;" class="ion-social-instagram-outline"></i></a></li>
+                        <ul class="contact_info contact_info_light">
+                            <li>
+                                <i class="ti-email"></i>
+                                <a href="mailto:info@areaelectrics.com.ve">info@areaelectrics.com.ve</a>
+                            </li>
+                            <li>
+                                <i class="ti-mobile"></i>
+                                <p>+58 414-1107270</p>
+                            </li>
                         </ul>
                     </div>
-        		</div>
+                    <div class="widget">
+                        <ul class="social_icons contact_info_light">
+                            <li><a href="https://www.instagram.com/areaelectric/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=584141107270&text=Hola!" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
+                            <li><a href="https://www.tiktok.com/areaelectric2021" target="_blank"><i class="fab fa-tiktok"  style="font-size: 30px;"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
-                	<div class="widget">
+                    <div class="widget">
                         <h6 class="widget_title">Enlaces</h6>
                         <ul class="widget_links">
                             <li><a href="{{ url('/') }}">Inicio</a></li>
                             <li><a href="{{ url('tienda-en-linea') }}">Tienda</a></li>
-                            <li><a href="{{ url('nosotros') }}">Nosotros</a></li>
+                            <li><a href="{{ url('nosotros') }}">Acerca De</a></li>
                             <li><a href="{{ url('contacto') }}">Contacto</a></li>
-                            @auth
-                            <li><a href="{{ url('mis-ordenes') }}">Mis Órdenes</a></li>
-                            @else
-                            <li><a href="{{ url('login') }}">Inicia Sesión</a></li>
-                            <li><a href="{{ url('register') }}">Regístrate</a></li>
-                            @endauth
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Categorias</h6>
+                    <div class="widget">
+                        <h6 class="widget_title">Categorías</h6>
                         <ul class="widget_links">
-                            @foreach($globalCategories as $category)
-                            <li><a href="{{ url('nuestras-categorias/' . $category->slug) }}">{{ $category->name }}</a></li>
+                            @foreach($globalCategories->take(6) as $category)
+                                <li><a href="{{ url('nuestras-categorias/' . $category->slug) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Contáctanos</h6>
-                        <ul class="contact_info contact_info_light">
-                            <li>
-                                <i class="ti-location-pin"></i>
-                                <p>Caracas, Venezuela</p>
-                            </li>
-                            <li>
-                                <i class="ti-email"></i>
-                                <a href="mailto:info@airanzasexshop.com">info@airanzasexshop.com</a>
-                            </li>
-                            <li>
-                                <i class="ti-mobile"></i>
-                                <p>+58 412 020 6548</p>
-                            </li>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h6 class="widget_title">Nuestras Marcas</h6>
+                        <ul class="widget_links">
+                            @foreach($globalBrands->take(6) as $brand)
+                                <li><a href="{{ url('nuestras-marcas/' . $brand->slug) }}">{{ $brand->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="widget">
+                        <div class="mb-5"></div>
+                        <ul class="widget_links">
+                            @foreach($globalBrands->skip(6)->take(7) as $brand)
+                                <li><a href="{{ url('nuestras-marcas/' . $brand->slug) }}">{{ $brand->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -281,12 +337,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} All Rights Reserved by Airanza Sex Shop | Desarrollado con ❤️ por <a href="https://www.linkedin.com/in/hectordamas/" target="_blank">Héctor Damas</a></p>
+                    <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} {{ env('APP_NAME') }} | Desarrollada con ❤️ Por <a href="https://www.linkedin.com/in/hectordamas/" target="_blank">Héctor Damas</a> </p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+<!-- END FOOTER -->
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 
