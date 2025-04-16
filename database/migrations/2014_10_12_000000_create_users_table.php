@@ -34,9 +34,9 @@ return new class extends Migration
         $user->save();
 
         $user = new User();
-        $user->name = "Airan Zambrano";
-        $user->email = 'airanzasexshop.ve@gmail.com';
-        $user->password = bcrypt('Airanzasexshop2024*');        
+        $user->name = "Maikel Camacho";
+        $user->email = 'admin@areaelectric.com.ve';
+        $user->password = bcrypt('AreaElectric2024*');        
         $user->role = 'Administrador';
         $user->save();
     }

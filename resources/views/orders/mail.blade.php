@@ -123,17 +123,17 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" align="right">Subtotal</td>
+                    <td colspan="4" align="right">Subtotal</td>
                     <td>${{ number_format($order->subtotal, 2, '.', ',') }}</td>
                     <td>${{ number_format($order->subtotalDetal, 2, '.', ',') }}</td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="right">IVA</td>
+                    <td colspan="4" align="right">IVA</td>
                     <td>${{ number_format($order->tax, 2, '.', ',') }}</td>
                     <td>${{ number_format($order->taxDetal, 2, '.', ',') }}</td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="right">Total</td>
+                    <td colspan="4" align="right">Total</td>
                     <td>${{ number_format($order->total, 2, '.', ',') }}</td>
                     <td>${{ number_format($order->totalDetal, 2, '.', ',') }}</td>
                 </tr>

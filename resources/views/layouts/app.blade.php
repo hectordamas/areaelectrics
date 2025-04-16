@@ -71,9 +71,9 @@
                         </div>
                         <ul class="contact_detail text-center text-lg-left">
                             <li>
-                                <a href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos"
+                                <a href="https://api.whatsapp.com/send?phone=584129096156&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos"
                                     target="_blank">
-                                    <i class="fab fa-whatsapp"></i><span>+58 414 378 0976</span>
+                                    <i class="fab fa-whatsapp"></i><span>+58 412 909 6156</span>
                                 </a>
                             </li>
                         </ul>
@@ -305,14 +305,14 @@
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>
-                                <p>+58 414 378 0976</p>
+                                <p>+58 412 909 6156</p>
                             </li>
                         </ul>
                     </div>
                     <div class="widget">
                         <ul class="social_icons contact_info_light">
                             <li><a href="https://www.instagram.com/areaelectric/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=584129096156&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
                             <li><a href="https://www.tiktok.com/areaelectric2021" target="_blank"><i class="fab fa-tiktok"  style="font-size: 30px;"></i></a></li>
                         </ul>
                     </div>
@@ -367,15 +367,15 @@
 <!-- Iconos Flotantes -->
 <div class="floating-icons">
     <!-- Icono de WhatsApp -->
-    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp" title="WhatsApp">
+    <a href="https://wa.me/584129096156?text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" target="_blank" class="whatsapp" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     <!-- Icono de Instagram -->
-    <a href="https://www.instagram.com/yourprofile" target="_blank" class="instagram" title="Instagram">
+    <a href="https://www.instagram.com/areaelectric" target="_blank" class="instagram" title="Instagram">
         <i class="fab fa-instagram"></i>
     </a>
     <!-- Icono de Ubicación -->
-    <a href="https://www.google.com/maps?q=tu+ubicacion" target="_blank" class="location" title="Ubicación">
+    <a href="https://maps.app.goo.gl/EmQxFoVn3LphNfDq9" target="_blank" class="location" title="Ubicación">
         <i class="fas fa-map-marker-alt"></i>
     </a>
 </div>

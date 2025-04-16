@@ -42,9 +42,9 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->brand_id = $request->brand;
         $product->description = $request->description;
-        $product->hidden = $request->hidden;
         $product->priceDetal = $request->priceDetal;
-        $product->ofertasDeLaSemana = $request->ofertasDeLaSemana;
+        $product->ofertasDeLaSemana = $request->ofertasDeLaSemana ? true : false;
+        $product->hidden = $request->hidden;        
         $product->youtube_id = $request->youtube_id;
         $product->slug = Str::slug($request->name);
         $product->save();
@@ -112,9 +112,10 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->brand_id = $request->brand;
         $product->description = $request->description;
-        $product->hidden = $request->hidden;
         $product->priceDetal = $request->priceDetal;
-        $product->ofertasDeLaSemana = $request->ofertasDeLaSemana;
+        $product->ofertasDeLaSemana = $request->ofertasDeLaSemana ? true : false;
+        $product->hidden = $request->hidden;
+
         $product->slug = Str::slug($request->name);
         $product->youtube_id = $request->youtube_id;
         $product->save();

@@ -59,8 +59,8 @@
                     <div class="contact_text">
                         <span>WhatsApp</span>
                         <a 
-                            href="https://api.whatsapp.com/send?phone=584143780976&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" 
-                            target="_blank">+58 414 378 0976</a>
+                            href="https://api.whatsapp.com/send?phone=584129096156&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" 
+                            target="_blank">+58 412 909 6156</a>
                     </div>
                 </div>
             </div>

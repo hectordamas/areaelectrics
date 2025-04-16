@@ -98,7 +98,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-dots="true" data-nav="false" data-margin="10" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                    <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="false" data-dots="true" data-nav="false" data-margin="10" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
                         @foreach($products as $product)
                             <div class="item">
                                 @include('components.product')
@@ -148,7 +148,7 @@
             </div>
             <div class="row">
             	<div class="col-md-12">
-                	<div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-dots="true" data-nav="false" data-margin="10" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                	<div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="false" data-dots="true" data-nav="false" data-margin="10" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
                         @foreach($latestProducts as $product)
                             <div class="item">
                                 @include('components.product')

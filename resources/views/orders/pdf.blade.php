@@ -98,7 +98,7 @@
             </td>
             <td width="33%">
                 <strong>Email:</strong> info@areaelectric.com.ve<br>
-                <strong>Whatsapp:</strong> +58 412 020 6548
+                <strong>Whatsapp:</strong> +58 412 909 6156
             </td>
             <td width="34%">
                 <strong>Orden:</strong> #{{ $order->order_number }}<br>

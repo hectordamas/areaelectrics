@@ -10,8 +10,8 @@ use App\Models\Category;
 class IndexController extends Controller
 {
     public function index(){
-        $products = Product::where('deleted', false)
-        ->inRandomOrder()
+        $products = Product::where('ofertasDeLaSemana', true)
+        ->orderBy('id', 'desc')
         ->get()
         ->take(12);
 
