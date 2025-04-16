@@ -87,7 +87,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{!! asset('assets/images/logo_dark.png') !!}" alt="{{ env('APP_NAME') }}">
+            <img src="{!! asset('assets/images/logo_light.png') !!}" alt="{{ env('APP_NAME') }}">
             <h1>¡Gracias por tu pedido!</h1>
         </div>
         <div class="order-details">

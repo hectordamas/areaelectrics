@@ -65,7 +65,7 @@
 
 <div class="email-container">
     <div class="header">
-        <img src="https://i.postimg.cc/G2fMfBYG/logo-dark.png" alt="Fiber Solutions">
+        <img src="{{ asset('assets/images/logo_dark.png') }}" alt="{{ env('APP_NAME') }}">
         <h1>Nuevo Mensaje Recibido</h1>
     </div>
 

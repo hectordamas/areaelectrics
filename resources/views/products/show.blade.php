@@ -79,7 +79,7 @@
                     <input type="hidden" id="id" name="id" value="{{ $product->id }}">
                     <input type="hidden" id="name" name="name" value="{{ $product->name }}">
                     <input type="hidden" id="price" name="price" value="{{ $product->price }}">
-                    <input type="hidden" id="price" name="priceDetal" value="{{ $product->priceDetal }}">
+                    <input type="hidden" id="priceDetal" name="priceDetal" value="{{ $product->priceDetal }}">
                     <input type="hidden" id="image" name="image" value="{{ $product->images()->first()->url }}">
                     <div class="cart-product-quantity">
                         <div class="quantity">

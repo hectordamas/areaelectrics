@@ -149,7 +149,8 @@
                             <thead>
                                 <tr>
                                     <th>Producto</th>
-                                    <th>Total</th>
+                                    <th>Total Mayor</th>
+                                    <th>Total Detal</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -157,6 +158,7 @@
                                 <tr>
                                     <td> {{$item->name}} <span class="product-qty">x {{$item->qty}} </span></td>
                                     <td>${{ $item->qty * $item->price }}</td>
+                                    <td>${{ $item->qty * $item->options['price_detal'] }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -164,14 +166,18 @@
                                 <tr>
                                     <th>SubTotal</th>
                                     <td class="product-subtotal">${{ Cart::subtotal() }}</td>
+                                    <td class="product-subtotalDetal">${{ number_format($subtotalDetal, 2, ',', '.') }}</td>
                                 </tr>
                                 <tr>
                                     <th>IVA</th>
                                     <td class="product-tax">${{ Cart::tax() }}</td>
+                                    <td class="product-taxDetal">${{ number_format($taxDetal, 2, ',', '.')  }}</td>
+
                                 </tr>
                                 <tr>
                                     <th>Total</th>
                                     <td class="product-subtotal">${{ Cart::total() }}</td>
+                                    <td class="product-subtotalDetal"><strong>${{ number_format($totalDetal, 2, ',', '.') }}</strong></td>
                                 </tr>
                             </tfoot>
                         </table>

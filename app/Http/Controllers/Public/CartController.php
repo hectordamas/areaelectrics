@@ -118,7 +118,17 @@ class CartController extends Controller
     }
 
     public function finalizarCompra(){
-        return view('cart.checkout');
+        $cartItems = Cart::content();
+    
+        $subtotalDetal = $cartItems->sum(fn($item) => $item->options['price_detal'] * $item->qty);
+        $taxDetal = $cartItems->sum(fn($item) => ($item->options['price_detal'] * $item->qty) * ($item->taxRate / 100));
+        $totalDetal = $subtotalDetal + $taxDetal;
+
+        return view('cart.checkout', [
+            'subtotalDetal' => number_format($subtotalDetal, 2),
+            'taxDetal' => number_format($taxDetal, 2),
+            'totalDetal' => number_format($totalDetal, 2),
+        ]);
     }
 
     public function checkout(){

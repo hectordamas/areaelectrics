@@ -52,12 +52,12 @@
                                 </td>
                                 <td class="product-name" data-title="Producto"><a href="#">{{ $item->name }}</a></td>
                                 <td class="product-price" data-title="Precio Mayor">${{ $item->price }}</td>
-                                <td class="product-priceDetal" data-title="Precio Detal">${{ $item->priceDetal ?? 0}}</td>
+                                <td class="product-priceDetal" data-title="Precio Detal">${{ $item->options['price_detal'] ?? 0}}</td>
                                 <td class="product-quantity product-quantity-{{$item->rowId}}" data-title="Cantidad">
                                     {{ $item->qty }}
                                 </td>
                               	<td class="product-subtotal-{{$item->rowId}}" data-title="Total Mayor">${{ $item->qty * $item->price }}</td>
-                                <td class="product-subtotalDetal-{{$item->rowId}}" data-title="Total Detal">${{ $item->qty * $item->priceDetal }}</td>
+                                <td class="product-subtotalDetal-{{$item->rowId}}" data-title="Total Detal">${{ $item->qty * $item->options['price_detal']}}</td>
                                 <td class="product-edit" data-title="Editar">
                                     <a href="javascript:void(0);" class="btn btn-fill-out btn-sm updateCartItem" data-rowid="{{$item->rowId}}">
                                         <i class="fa fa-edit"></i>
@@ -112,17 +112,17 @@
                                 <tr>
                                     <td class="cart_total_label">Subtotal</td>
                                     <td class="cart_subtotal_amount">${{ Cart::subtotal() }}</td>
-                                    <td class="cart_subtotal_amountDetal">${{ $subtotalDetal }}</td>
+                                    <td class="cart_subtotal_amountDetal">${{ number_format($subtotalDetal, 2, ',', '.') }}</td>
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">IVA</td>
                                     <td class="cart_tax_amount">${{ Cart::tax() }}</td>
-                                    <td class="cart_tax_amountDetal">${{ $taxDetal }}</td>
+                                    <td class="cart_tax_amountDetal">${{ number_format($taxDetal, 2, ',', '.')  }}</td>
                                 </tr>
                                 <tr>
                                     <td class="cart_total_label">Total</td>
                                     <td class="cart_total_amount"><strong>${{ Cart::total() }}</strong></td>
-                                    <td class="cart_total_amountDetal"><strong>${{ $totalDetal }}</strong></td>
+                                    <td class="cart_total_amountDetal"><strong>${{ number_format($totalDetal, 2, ',', '.') }}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
