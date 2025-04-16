@@ -286,7 +286,7 @@ class ProductsController extends Controller
         $writer = new Xlsx($spreadsheet);
 
         // Crear el archivo temporalmente en el servidor
-        $fileName = 'airanza_sex_shop_productos.xlsx';
+        $fileName = 'productos.xlsx';
         $temp_file = tempnam(sys_get_temp_dir(), $fileName);
         $writer->save($temp_file);
 

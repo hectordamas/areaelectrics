@@ -2,8 +2,8 @@
 
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Acerca de {{ env('APP_NAME') }}</title>
-<meta name="description" content="En Airanza Sex Shop, nos dedicamos a mejorar la vida íntima de nuestros clientes con una amplia gama de productos diseñados para el placer. Ofrecemos una selección curada de juguetes sexuales para todos los gustos y preferencias, con un enfoque en calidad, seguridad y discreción.">
-<meta name="keywords" content="Airanza Sex Shop, juguetes sexuales, productos íntimos, tienda para adultos, calidad y seguridad, discreción, atención al cliente, productos para el placer, dildos, plug, anales, vibradores, lenceria">
+<meta name="description" content=" En Área Electric, nos comprometemos a ofrecer a nuestros clientes lo último en tecnología en iluminación LED, seguridad, redes, fibra óptica, automotriz, electricidad y computación, garantizando calidad e innovación a precios competitivos. A lo largo de los años, hemos crecido y evolucionado, pero nuestra pasión por la excelencia y nuestro compromiso con el servicio al cliente siguen siendo nuestra prioridad">
+<meta name="keywords" content="tecnología en iluminación LED, seguridad electrónica, redes de comunicación, fibra óptica, productos automotrices, electricidad, computación, calidad e innovación, precios competitivos, servicio al cliente, tecnología de vanguardia, productos electrónicos, iluminación de calidad, productos automotrices LED, soluciones en electricidad, fibra óptica para redes, accesorios automotrices, equipos de computación, área de iluminación LED, innovación tecnológica en productos eléctricos">
 @endsection
 
 @section('content')

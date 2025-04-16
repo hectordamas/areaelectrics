@@ -2,8 +2,8 @@
 
 @section('metadata')
 <title>{{ env('APP_NAME') }} - Contacto</title>
-<meta name="description" content="Contáctanos en Airanza Sex Shop para recibir asesoría sobre nuestros productos íntimos. Estamos disponibles 24/7 para ofrecerte la mejor atención. Síguenos en Instagram, escríbenos por correo o contáctanos por WhatsApp.">
-<meta name="keywords" content="contacto, asesoría, tienda para adultos, juguetes sexuales, productos íntimos, whatsapp, instagram, discreción, Airanza Sex Shop">
+<meta name="description" content="Contáctanos en {{ env('APP_NAME') }} para recibir asesoría sobre nuestros productos en iluminación LED, seguridad electrónica, redes, fibra óptica, y más. Estamos disponibles para ofrecerte la mejor atención y asesoramiento. Conéctate con nosotros por correo, WhatsApp o redes sociales.">
+<meta name="keywords" content="contacto, asesoría, iluminación LED, seguridad electrónica, redes de comunicación, fibra óptica, productos automotrices, electricidad, computación, atención al cliente, WhatsApp, Instagram, Área Electric">
 @endsection
 
 @section('content')
