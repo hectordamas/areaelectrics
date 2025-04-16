@@ -313,7 +313,7 @@
                         <ul class="social_icons contact_info_light">
                             <li><a href="https://www.instagram.com/areaelectric/" target="_blank"><i class="fab fa-instagram" style="font-size: 30px;"></i></a></li>
                             <li><a href="https://api.whatsapp.com/send?phone=584129096156&text=Hola, le escribo desde la página web estoy interesado en conocer más sobre sus productos" target="_blank"><i class="fab fa-whatsapp" style="font-size: 30px;"></i></a></li>
-                            <li><a href="https://www.tiktok.com/areaelectric2021" target="_blank"><i class="fab fa-tiktok"  style="font-size: 30px;"></i></a></li>
+                            <li><a href="https://www.tiktok.com/@areaelectric2021" target="_blank"><i class="fab fa-tiktok"  style="font-size: 30px;"></i></a></li>
                         </ul>
                     </div>
                 </div>
