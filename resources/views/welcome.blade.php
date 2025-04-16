@@ -12,6 +12,22 @@
             height:100%;
         }
     </style>
+    <style>
+        /* Definimos los estilos básicos para la imagen */
+        .img-hover {
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            max-width: 100%;
+        }
+    
+        /* Efecto hover */
+        .img-hover:hover {
+            transform: scale(1.05); /* Escala de la imagen */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+            opacity: 0.9; /* Sutil cambio en la opacidad */
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -116,14 +132,15 @@
     	<div class="container">
         	<div class="row">
             	<div class="col-md-4 mb-3">
-                    <img src="{{ getImageUrl('assets/images/banner-a.png') }}" class="rounded" alt="">
+                    <img src="{{ getImageUrl('assets/images/banner-a.png') }}" class="rounded" alt="Delivery gratis en caracas banner">
                 </div>
                 <div class="col-md-4 mb-3">
-                    <img src="{{ getImageUrl('assets/images/banner-b.png') }}" class="rounded" alt="">
-
+                    <a href="https://www.mercadolibre.com.ve/pagina/areaelectric" target="_blank">
+                        <img src="{{ getImageUrl('assets/images/banner-b.png') }}" class="rounded img-hover" alt="envios gratis con Mercado libre banner">
+                    </a>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <img src="{{ getImageUrl('assets/images/banner-c.png') }}" class="rounded" alt="">
+                    <img src="{{ getImageUrl('assets/images/banner-c.png') }}" class="rounded" alt="despachos a envio nacional">
 
                 </div>
             </div>
