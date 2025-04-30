@@ -39,7 +39,7 @@
 <!-- Style CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css">
 
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 </head>
 
