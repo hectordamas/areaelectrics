@@ -167,10 +167,11 @@
                                         </div>
 
                                         
-                                        <div class="col-md-12 form-group">
+                                        <div class="col-md-6 form-group">
                                             <label class="font-weight-bold">SKU</label>
                                             <input type="text" class="form-control" id="sku" name="sku" >
                                         </div>
+                                        <div class="col-md-6"></div>
                                     
                                         <div class="form-group col-md-6">
                                             <label for="description" class="font-weight-bold">Descripción</label>
