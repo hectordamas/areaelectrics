@@ -97,7 +97,7 @@
                 <hr>
 
                 <ul class="product-meta">
-                    <!--<li>SKU: <a href="#">BE45VGRT</a></li>-->
+                    @if($product->sku)<li>SKU: <a href="#">{{ $product->sku }}</a></li>@endif
                     @if($product->brand)
                     <li>Marca: <a href="{{ url('nuestras-marcas/' . $product->brand->slug) }}">{{ $product->brand->name }}</a></li>
                     @endif

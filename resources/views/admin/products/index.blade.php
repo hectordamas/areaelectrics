@@ -85,6 +85,7 @@
                         <thead class="table-dark">
                             <tr>
                                 <th>#</th>
+                                <th>SKU</th>
                                 <th>Nombre</th>
                                 <th>Marca</th>
                                 <th>Precio</th>
@@ -98,6 +99,7 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{ $product->id }}</td>
+                                    <td>{{ $product->sku }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{$product->brand ? $product->brand->name : 'N/A' }}</td>
                                     <td class="font-weight-bold text-success">

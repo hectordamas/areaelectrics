@@ -165,6 +165,12 @@
                                             <label class="font-weight-bold">YouTube ID</label>
                                             <input type="text" class="form-control" id="youtube_id" name="youtube_id" >
                                         </div>
+
+                                        
+                                        <div class="col-md-12 form-group">
+                                            <label class="font-weight-bold">SKU</label>
+                                            <input type="text" class="form-control" id="sku" name="sku" >
+                                        </div>
                                     
                                         <div class="form-group col-md-6">
                                             <label for="description" class="font-weight-bold">Descripción</label>

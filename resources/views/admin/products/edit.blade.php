@@ -200,6 +200,11 @@
                                                 <input type="text" class="form-control" id="youtube_id" name="youtube_id" value="{{ $product->youtube_id }}">
                                             </div>
 
+                                            <div class="col-md-12 form-group">
+                                                <label class="font-weight-bold">SKU</label>
+                                                <input type="text" class="form-control" id="sku" name="sku" value="{{ $product->sku }}">
+                                            </div>
+
                                             <div class="form-group col-md-6">
                                                 <label for="description" class="font-weight-bold">Descripción</label>
                                                 <textarea rows="6" id="description" class="form-control" name="description" autofocus>{!! $product->description !!}</textarea>

@@ -46,6 +46,7 @@ class ProductsController extends Controller
         $product->ofertasDeLaSemana = $request->ofertasDeLaSemana ? true : false;
         $product->hidden = $request->hidden;        
         $product->youtube_id = $request->youtube_id;
+        $product->sku = $request->sku;
         $product->slug = Str::slug($request->name);
         $product->save();
 
@@ -118,6 +119,7 @@ class ProductsController extends Controller
 
         $product->slug = Str::slug($request->name);
         $product->youtube_id = $request->youtube_id;
+        $product->sku = $request->sku;
         $product->save();
 
         // Actualizar el slug con el ID
