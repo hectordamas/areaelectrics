@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <h5 class="text-dark font-weight-bold">De:</h5>
                     <p class="mb-0">{{ $message->name }}</p>
-                    <p><a href="mailto:{{ $message->email }}" target="_blank">{{ $message->email }}</a></p>
+                    <p><a href="https://mail.google.com/mail/?view=cm&to={{ $message->email }}">{{ $message->email }}</a></p>                
                 </div>
                 <div class="col-md-6 text-right">
                     <h5 class="text-dark font-weight-bold">Recibido:</h5>
@@ -43,7 +43,7 @@
         <a href="{{ route('messages.index') }}" class="btn btn-outline-primary">
             <i class="fas fa-arrow-left"></i> Volver a la Bandeja de Entrada
         </a>
-        <a href="mailto:{{ $message->email }}" target="_blank" class="btn btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&to={{ $message->email }}" target="_blank" class="btn btn-primary">
             <i class="fas fa-reply"></i> Responder
         </a>
     </div>
